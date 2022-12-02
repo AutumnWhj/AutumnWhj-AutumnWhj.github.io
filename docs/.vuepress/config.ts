@@ -63,7 +63,7 @@ export default defineUserConfig({
       "meta",
       {
         property: "twitter:url",
-        content: "https://ivwv.github.io/",
+        content: "https://autumnwhj.github.io/",
       },
     ],
     [
@@ -196,8 +196,8 @@ export default defineUserConfig({
     }),
     // Sitemap 配置
     sitemapPlugin({
-      hostname: "https://ivwv.github.io/",
-      extraUrls: ["https://ivwv.netlify.app/"],
+      hostname: "https://autumnwhj.github.io/",
+      extraUrls: [""],
       changefreq: "hourly",
       modifyTimeGetter: (page): any => {
         return page.frontmatter.date;
@@ -205,7 +205,7 @@ export default defineUserConfig({
     }),
     // Feed生成器
     feedPlugin({
-      hostname: "https://ivwv.github.io/",
+      hostname: "https://autumnwhj.github.io/",
       atom: true,
       rss: true,
       json: true,
@@ -214,10 +214,10 @@ export default defineUserConfig({
     // 移动端适配
     pwaPlugin({
       showInstall: true,
-      favicon: "https://ivwv.github.io/logo.png",
+      favicon: "https://autumnwhj.github.io/logo.png",
       cachePic: true,
       apple: {
-        icon: "https://ivwv.github.io/logo.png",
+        icon: "https://autumnwhj.github.io/logo.png",
       },
     }),
     // 搜索插件注册

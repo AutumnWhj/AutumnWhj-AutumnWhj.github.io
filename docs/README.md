@@ -2,13 +2,13 @@
 home: true
 layout: Blog
 # icon: home
-title: ❤努力提升自己❤
+title: Home
 description: 分享自己的学习日常✨ 分享自己的学习心得✨ 分享自己的学习经验✨ 分享技术文章✨ 分享学习笔记✨ 分享好用资源✨
 isOriginal: true
 heroImage: /logo.svg
 heroText: Jin's Blog
 heroFullScreen: true
-tagline: 前端那些事儿~
+tagline: This is my life.
 
 bgImage: /bg/夕阳.png
 
@@ -43,7 +43,7 @@ projects:
   #   desc: 自定义详细介绍
   #   link: https://你的自定义链接
 
-footer: 努力提升自己!
+footer: up up up!
 ---
 
 
