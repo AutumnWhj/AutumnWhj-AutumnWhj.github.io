@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <atom:link href="https://ivwv.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://autumnwhj.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <title>Jin's Blog</title>
-    <link>https://ivwv.github.io/</link>
+    <link>https://autumnwhj.github.io/</link>
     <description>Jin's Blog</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 02 Dec 2022 07:40:57 GMT</pubDate>
-    <lastBuildDate>Fri, 02 Dec 2022 07:40:57 GMT</lastBuildDate>
+    <pubDate>Fri, 02 Dec 2022 07:49:34 GMT</pubDate>
+    <lastBuildDate>Fri, 02 Dec 2022 07:49:34 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>使用指南</category>
@@ -38,20 +38,20 @@
     <category>Vuex</category>
     <item>
       <title>幻灯片页</title>
-      <link>https://ivwv.github.io/slide.html</link>
-      <guid>https://ivwv.github.io/slide.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">幻灯片页</source>
+      <link>https://autumnwhj.github.io/slide.html</link>
+      <guid>https://autumnwhj.github.io/slide.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">幻灯片页</source>
       <pubDate>Wed, 29 Jul 2020 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<CountView></CountView>
 
 <Presentation id="presentation-1a96284c" data-code="%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20--%3E%0A%0A%23%23%20%E5%B9%BB%E7%81%AF%E7%89%87%E6%BC%94%E7%A4%BA%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%B9%BB%E7%81%AF%E7%89%87%E6%BC%94%E7%A4%BA%E4%B8%8E%E5%90%84%E7%A7%8D%E5%B0%8F%E8%B4%B4%E5%A3%AB%E3%80%82%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%3E%20%E4%BD%9C%E8%80%85%20Mr.Hope.%20%E8%AF%B7%E6%BB%9A%E5%8A%A8%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E8%BF%9B%E5%85%A5%E4%B8%8B%E4%B8%80%E9%A1%B5%0A%0A---%0A%0A%23%23%20%E6%A0%87%E6%B3%A8%E5%B9%BB%E7%81%AF%E7%89%87%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%5B%F0%9F%91%87%5D(%23%2F1%2F1)%0A%0A--%0A%0A%23%23%20%E6%A0%87%E6%B3%A8%E5%B9%BB%E7%81%AF%E7%89%87%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%E4%BD%BF%E7%94%A8%20%60---%60%20%E6%A0%87%E6%B3%A8%E6%B0%B4%E5%B9%B3%E5%B9%BB%E7%81%AF%E7%89%87%0A%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in%22%20--%3E%0A%0A%E5%9C%A8%E6%B0%B4%E5%B9%B3%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20%60--%60%20%E5%88%86%E5%89%B2%E5%9E%82%E7%9B%B4%E5%B9%BB%E7%81%AF%E7%89%87%0A%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in%22%20--%3E%0A%0A%E4%BD%BF%E7%94%A8%20%60%3C!--%20.slide%3A%20...%20--%3E%60%20%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%8A%E6%B7%BB%E5%8A%A0%E5%B1%9E%E6%80%A7%0A%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in%22%20--%3E%0A%0A%E4%BD%BF%E7%94%A8%20%60%3C!--%20.element%3A%20...%20--%3E%60%20%E5%9C%A8%E5%89%8D%E4%B8%80%E4%B8%AA%20HTML%20%E5%85%83%E7%B4%A0%E4%B8%8A%E6%B7%BB%E5%8A%A0%E5%B1%9E%E6%80%A7%0A%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in%22%20--%3E%0A%0A---%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20Markdown%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20Markdown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%90%84%E7%A7%8D%E6%A0%87%E8%AE%B0.%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20Markdown%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20Markdown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%90%84%E7%A7%8D%E6%A0%87%E8%AE%B0.%0A%0A%23%23%23%20%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%20H3%0A%0A%E6%A0%87%E9%A2%98%E9%BB%98%E8%AE%A4%E4%BC%9A%E8%87%AA%E5%8A%A8%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%A4%A7%E5%86%99%E3%80%82%0A%0A%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%9C%89%E7%9D%80%20**%E7%B2%97%E4%BD%93**%2C%20_%E6%96%9C%E4%BD%93_%2C%20~~%E5%88%A0%E9%99%A4%E7%BA%BF~~%20%E6%96%87%E5%AD%97%E5%B9%B6%E5%8C%85%E5%90%AB%20%5B%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%5D(https%3A%2F%2Fmrhope.site)%20%E7%9A%84%E6%AE%B5%E8%90%BD%EF%BC%8C%E5%B9%B6%E4%B8%94%E5%AE%83%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C%E3%80%82%E6%89%80%E4%BB%A5%E4%BD%A0%E6%97%A0%E9%9C%80%E6%8B%85%E5%BF%83%E5%AE%83%E7%9A%84%E9%95%BF%E5%BA%A6%E3%80%82%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20Markdown%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20Markdown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%90%84%E7%A7%8D%E6%A0%87%E8%AE%B0.%0A%0A%E5%88%97%E8%A1%A8%E9%BB%98%E8%AE%A4%E4%B8%BA%20%60inline-block%60%0A%0A-%20%E9%A1%B9%E7%9B%AE%0A-%20%E9%A1%B9%E7%9B%AE%0A-%20%E9%A1%B9%E7%9B%AE%0A%0A1.%20%E9%A1%B9%E7%9B%AE%201%0A1.%20%E9%A1%B9%E7%9B%AE%202%0A1.%20%E9%A1%B9%E7%9B%AE%203%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20Markdown%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20Markdown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%90%84%E7%A7%8D%E6%A0%87%E8%AE%B0.%0A%0A%E5%9C%A8%E4%BD%A0%E5%90%AF%E7%94%A8%20%60highlight%60%20%E6%8F%92%E4%BB%B6%E5%90%8E%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%9D%97%E4%BC%9A%E8%87%AA%E5%8A%A8%E9%AB%98%E4%BA%AE%E3%80%82%0A%0A%60%60%60js%0Aconst%20a%20%3D%201%3B%0A%60%60%60%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20Markdown%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20Markdown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%90%84%E7%A7%8D%E6%A0%87%E8%AE%B0.%0A%0A%E5%9C%A8%E4%BD%A0%E5%90%AF%E7%94%A8%20%60math%60%20%E6%8F%92%E4%BB%B6%E5%90%8E%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%20TEX%20%E6%A0%BC%E5%BC%8F%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E3%80%82%0A%0A%24%24%0AJ(%5Ctheta_0%2C%5Ctheta_1)%20%3D%20%5Csum_%7Bi%3D0%7D%0A%24%24%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20Markdown%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20Markdown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%90%84%E7%A7%8D%E6%A0%87%E8%AE%B0.%0A%0A%E2%9A%A0**%E8%AF%B7%E6%B3%A8%E6%84%8F**%3A%20%E8%A1%A8%E6%A0%BC%E5%92%8C%E5%88%86%E5%89%B2%E7%BA%BF%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%89%80%E6%9C%89%E4%B8%8D%E5%9C%A8%20Markdown%20%E6%A0%87%E5%87%86%E8%AF%AD%E6%B3%95%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9%E5%9D%87%E4%B8%8D%E5%8F%97%E6%94%AF%E6%8C%81%E3%80%82%0A%0A---%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%B8%83%E5%B1%80%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20%20--%3E%0A%0A%23%23%20%E5%B8%83%E5%B1%80%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%F0%9F%91%86%20%60r-fit-text%60%20class%20%E4%BC%9A%E8%AE%A9%E6%96%87%E5%AD%97%E5%9C%A8%E4%B8%8D%E8%B6%85%E5%87%BA%E5%B9%BB%E7%81%AF%E7%89%87%E8%8C%83%E5%9B%B4%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E5%B0%BD%E5%8F%AF%E8%83%BD%E5%A4%A7%E3%80%82%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20%20--%3E%0A%0A%23%23%20%E5%B8%83%E5%B1%80%0A%0A!%5BLogo%5D(%2Flogo.svg)%0A%0A%3C!--%20.element%3A%20class%3D%22r-stretch%22%20--%3E%0A%0A%F0%9F%91%86%20%60r-stretch%60%20class%20%E5%B8%AE%E5%8A%A9%E4%BD%A0%E6%8E%A7%E5%88%B6%E6%B3%A8%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E8%A7%86%E9%A2%91%E7%9A%84%E5%A4%A7%E5%B0%8F%EF%BC%8C%E4%BD%BF%E5%AE%83%E4%BB%AC%E5%A1%AB%E5%85%85%E6%BB%A1%E5%B9%BB%E7%81%AF%E7%89%87%E5%9E%82%E7%9B%B4%E6%96%B9%E5%90%91%E4%B8%8A%E7%9A%84%E5%89%A9%E4%BD%99%E7%A9%BA%E9%97%B4%E3%80%82%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20data-background-color%3D%22rgb(70%2C%2070%2C%20255)%22%20--%3E%0A%0A%23%23%20%E5%B8%83%E5%B1%80%0A%0A%23%23%23%20%E8%83%8C%E6%99%AF%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E5%90%91%E7%89%B9%E5%AE%9A%E5%B9%BB%E7%81%AF%E7%89%87%E6%B7%BB%E5%8A%A0%20%60data-background%60%20%E5%B1%9E%E6%80%A7%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B9%BB%E7%81%AF%E7%89%87%E8%83%8C%E6%99%AF.%0A%0A---%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%E7%94%A8%E4%BA%8E%E9%AB%98%E4%BA%AE%E6%88%96%E6%98%BE%E9%9A%90%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%E3%80%82%0A%0A%E4%BD%A0%E9%9C%80%E8%A6%81%E5%9C%A8%E5%85%83%E7%B4%A0%E4%B8%8A%E6%B7%BB%E5%8A%A0%20%60fragment%60%20%E5%92%8C%E5%8A%A8%E7%94%BB%20class%E3%80%82%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%23%23%23%20%E5%8A%A8%E7%94%BB%20class%0A%0A-%20%60fade-in%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in%22%20--%3E%0A%0A-%20%60fade-out%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-out%22%20--%3E%0A%0A-%20%60fade-up%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-up%22%20--%3E%0A%0A%3C!--%20list%20break%20--%3E%0A%0A-%20%60fade-down%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-down%22%20--%3E%0A%0A-%20%60fade-left%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-left%22%20--%3E%0A%0A-%20%60fade-right%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-right%22%20--%3E%0A%0A%3C!--%20list%20break%20--%3E%0A%0A-%20%60fade-in-then-out%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in-then-out%22%20--%3E%0A%0A-%20%60fade-in-then-semi-out%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in-then-semi-out%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%23%23%23%20%E5%8A%A8%E7%94%BB%20class%0A%0A-%20%60grow%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20grow%22%20--%3E%0A%0A-%20%60shrink%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20shrink%22%20--%3E%0A%0A-%20%60strike%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20strike%22%20--%3E%0A%0A%3C!--%20list%20break%20--%3E%0A%0A-%20%60highlight-red%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20highlight-red%22%20--%3E%0A%0A-%20%60highlight-green%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20highlight-green%22%20--%3E%0A%0A-%20%60highlight-blue%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20highlight-blue%22%20--%3E%0A%0A%3C!--%20list%20break%20--%3E%0A%0A-%20%60highlight-current-red%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20highlight-current-red%22%20--%3E%0A%0A-%20%60highlight-current-green%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20highlight-current-green%22%20--%3E%0A%0A-%20%60highlight-current-blue%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20highlight-current-blue%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%23%23%23%20%E5%A4%9A%E4%B8%AA%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E6%8C%89%E7%85%A7%E9%A1%BA%E5%BA%8F%E5%8C%85%E8%A3%B9%E4%B8%80%E4%B8%AA%20HTML%20%E5%85%83%E7%B4%A0%E4%BD%BF%E5%85%B6%E6%8B%A5%E6%9C%89%E5%A4%9A%E4%B8%AA%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%3Cspan%20class%3D%22fragment%20fade-in%22%3E%0A%20%20%3Cspan%20class%3D%22fragment%20highlight-red%22%3E%0A%20%20%20%20%3Cspan%20class%3D%22fragment%20fade-out%22%3E%0A%20%20%20%20%20%20%E6%B8%90%E5%85%A5%20%3E%20%E5%8F%98%E7%BA%A2%20%3E%20%E6%B8%90%E5%87%BA%0A%20%20%20%20%3C%2Fspan%3E%0A%20%20%3C%2Fspan%3E%0A%3C%2Fspan%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%23%23%23%20%E9%A1%BA%E5%BA%8F%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%20%60data-fragment-index%60%20%E5%B1%9E%E6%80%A7%E6%94%B9%E5%8F%98%E5%85%83%E7%B4%A0%E7%9A%84%E5%8A%A8%E7%94%BB%E9%A1%BA%E5%BA%8F%E3%80%82%0A%0A%E4%B8%8D%E5%90%8C%E5%85%83%E7%B4%A0%E5%8F%AF%E4%BB%A5%E6%9C%89%E7%9B%B8%E5%90%8C%E7%9A%84%E5%8A%A8%E7%94%BB%E9%A1%BA%E5%BA%8F%E3%80%82%0A%0A-%20%E6%9C%80%E5%90%8E%E6%98%BE%E7%A4%BA%0A%3C!--%20.element%3A%20class%3D%22fragment%22%20data-fragment-index%3D%223%22--%3E%0A%0A-%20%E7%AC%AC%E4%BA%8C%E4%B8%AA%E6%98%BE%E7%A4%BA%0A%3C!--%20.element%3A%20class%3D%22fragment%22%20data-fragment-index%3D%222%22--%3E%0A%0A%3C!--%20list%20break%20--%3E%0A%0A-%20%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%98%BE%E7%A4%BA%0A%3C!--%20.element%3A%20class%3D%22fragment%22%20data-fragment-index%3D%221%22--%3E%0A%0A-%20%E7%AC%AC%E4%BA%8C%E4%B8%AA%E6%98%BE%E7%A4%BA%0A%3C!--%20.element%3A%20class%3D%22fragment%22%20data-fragment-index%3D%222%22--%3E%0A%0A---%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E6%B8%90%E5%8F%98%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E6%B8%90%E5%8F%98%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0ATransition%20%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84%20%60transition%60%20%E9%80%89%E9%A1%B9%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E5%9C%A8%E7%89%B9%E5%AE%9A%E5%B9%BB%E7%81%AF%E7%89%87%E6%B7%BB%E5%8A%A0%20%60data-transition%60%20%E5%B1%9E%E6%80%A7%E5%B1%80%E9%83%A8%E8%AE%BE%E7%BD%AE.%0A%0A%E5%8F%AF%E8%83%BD%E7%9A%84%E5%80%BC%3A%0A%0A-%20none%0A-%20fade%0A-%20slide%0A%0A%3C!--%20list%20break%20--%3E%0A%0A-%20convex%0A-%20concave%0A-%20zoom%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E6%B8%90%E5%8F%98%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%23%23%23%20%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E7%9B%B8%E9%82%BB%E7%9A%84%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%8A%E6%B7%BB%E5%8A%A0%20%60data-auto-animate%60%20%E4%BD%BF%E7%9B%B8%E5%90%8C%E7%9A%84%20HTML%20%E5%85%83%E7%B4%A0%E4%BA%A7%E7%94%9F%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C%E3%80%82%0A%0A---%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%9F%E8%83%BD%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%9F%E8%83%BD%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%23%23%23%20%E4%BB%A3%E7%A0%81%0A%0A%E9%80%9A%E8%BF%87%E5%90%AF%E7%94%A8%20%60highlight%60%20%E6%8F%92%E4%BB%B6%EF%BC%8C%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%AF%B9%E4%BB%A3%E7%A0%81%E5%9D%97%E8%BF%9B%E8%A1%8C%E9%AB%98%E4%BA%AE%E3%80%82%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%20%60%5Ba-b%7Cc-d%5D%60%20%E8%AF%AD%E6%B3%95%E6%9D%A5%E5%88%86%E5%B8%83%E9%AB%98%E4%BA%AE%E7%89%B9%E5%AE%9A%E8%A1%8C%E3%80%82%0A%0A%60%60%60js%20%5B1-2%7C3%7C4%5D%0Alet%20a%20%3D%201%3B%0Alet%20b%20%3D%202%3B%0Alet%20c%20%3D%20(x)%20%3D%3E%201%20%2B%202%20%2B%20x%3B%0Ac(3)%3B%0A%60%60%60%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%9F%E8%83%BD%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%23%23%23%20%E9%A2%84%E8%A7%88%E6%A8%A1%E5%BC%8F%0A%0A%E6%8C%89%E4%B8%8B%20%60Esc%60%20%E6%88%96%20%60O%60%20%E5%8D%B3%E5%8F%AF%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E8%8E%B7%E5%BE%97%E7%84%A6%E7%82%B9%E6%97%B6%E8%BF%9B%E5%85%A5%E9%A2%84%E8%A7%88%E6%A8%A1%E5%BC%8F%E3%80%82%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%9F%E8%83%BD%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%23%23%23%20%E5%85%A8%E5%B1%8F%E6%A8%A1%E5%BC%8F%0A%0A%E6%8C%89%E4%B8%8B%20%60F%60%20%E6%88%96%20%60F11%60%20%E5%8D%B3%E5%8F%AF%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E8%8E%B7%E5%BE%97%E7%84%A6%E7%82%B9%E6%97%B6%E8%BF%9B%E5%85%A5%E5%85%A8%E5%B1%8F%E6%A8%A1%E5%BC%8F%E3%80%82%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%9F%E8%83%BD%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%23%23%23%20%E7%BC%A9%E6%94%BE%0A%0A%E6%8C%89%E4%B8%8B%20%60alt%60%20(Linux%20%E4%B8%8A%E4%BD%BF%E7%94%A8%20%60ctrl%60)%20%E7%9A%84%E5%90%8C%E6%97%B6%E7%82%B9%E5%87%BB%E5%B9%BB%E7%81%AF%E7%89%87%E7%9A%84%E4%BB%BB%E4%BD%95%E5%85%83%E7%B4%A0%EF%BC%8C%E5%8D%B3%E5%8F%AF%E4%BB%A5%E5%90%91%E6%AD%A4%E5%85%83%E7%B4%A0%E8%BF%9B%E8%A1%8C%E6%94%BE%E5%A4%A7%E3%80%82%0A%0A%E5%86%8D%E6%AC%A1%E7%82%B9%E5%87%BB%E5%8D%B3%E5%8F%AF%E7%BC%A9%E5%B0%8F%E3%80%82%0A%0A---%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%23%23%20%E7%BB%93%E6%9D%9F%0A" theme="auto"></Presentation>]]></content:encoded>
-      <enclosure url="https://ivwv.github.io/logo.svg" type="image/svg+xml"/>
+      <enclosure url="https://autumnwhj.github.io/logo.svg" type="image/svg+xml"/>
     </item>
     <item>
       <title>主要功能与配置演示</title>
-      <link>https://ivwv.github.io/guide/</link>
-      <guid>https://ivwv.github.io/guide/</guid>
-      <source url="https://ivwv.github.io/rss.xml">主要功能与配置演示</source>
+      <link>https://autumnwhj.github.io/guide/</link>
+      <guid>https://autumnwhj.github.io/guide/</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">主要功能与配置演示</source>
       <category>使用指南</category>
       <pubDate>Wed, 29 Jul 2020 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<CountView></CountView>
@@ -74,9 +74,9 @@
     </item>
     <item>
       <title>布局与功能禁用</title>
-      <link>https://ivwv.github.io/guide/disable.html</link>
-      <guid>https://ivwv.github.io/guide/disable.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">布局与功能禁用</source>
+      <link>https://autumnwhj.github.io/guide/disable.html</link>
+      <guid>https://autumnwhj.github.io/guide/disable.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">布局与功能禁用</source>
       <description>
 你可以通过设置页面的 Frontmatter，在页面禁用功能与布局。
 </description>
@@ -103,9 +103,9 @@
     </item>
     <item>
       <title>密码加密的文章</title>
-      <link>https://ivwv.github.io/guide/encrypt.html</link>
-      <guid>https://ivwv.github.io/guide/encrypt.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">密码加密的文章</source>
+      <link>https://autumnwhj.github.io/guide/encrypt.html</link>
+      <guid>https://autumnwhj.github.io/guide/encrypt.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">密码加密的文章</source>
       <category>使用指南</category>
       <pubDate>Fri, 29 Jul 2022 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<CountView></CountView>
@@ -117,9 +117,9 @@
     </item>
     <item>
       <title>Markdown 展示</title>
-      <link>https://ivwv.github.io/guide/markdown.html</link>
-      <guid>https://ivwv.github.io/guide/markdown.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">Markdown 展示</source>
+      <link>https://autumnwhj.github.io/guide/markdown.html</link>
+      <guid>https://autumnwhj.github.io/guide/markdown.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">Markdown 展示</source>
       <description>
 VuePress 主要从 Markdown 文件生成页面。因此，你可以使用它轻松生成文档或博客站点。
 你应该创建和编写 Markdown 文件，以便 VuePress 可以根据文件结构将它们转换为不同的页面。
@@ -395,9 +395,9 @@ $$</p>
     </item>
     <item>
       <title>页面配置</title>
-      <link>https://ivwv.github.io/guide/page.html</link>
-      <guid>https://ivwv.github.io/guide/page.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">页面配置</source>
+      <link>https://autumnwhj.github.io/guide/page.html</link>
+      <guid>https://autumnwhj.github.io/guide/page.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">页面配置</source>
       <description>
 more 注释之前的内容被视为文章摘要。
 </description>
@@ -448,9 +448,9 @@ more 注释之前的内容被视为文章摘要。
     </item>
     <item>
       <title>PDF书籍整合</title>
-      <link>https://ivwv.github.io/posts/PDF/</link>
-      <guid>https://ivwv.github.io/posts/PDF/</guid>
-      <source url="https://ivwv.github.io/rss.xml">PDF书籍整合</source>
+      <link>https://autumnwhj.github.io/posts/PDF/</link>
+      <guid>https://autumnwhj.github.io/posts/PDF/</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">PDF书籍整合</source>
       <description>PDF书籍整合  PDF书籍整合均来自互联网</description>
       <category>PDF</category>
       <pubDate>Mon, 01 Aug 2022 00:00:00 GMT</pubDate>
@@ -497,9 +497,9 @@ more 注释之前的内容被视为文章摘要。
     </item>
     <item>
       <title>我的项目整合</title>
-      <link>https://ivwv.github.io/posts/project/</link>
-      <guid>https://ivwv.github.io/posts/project/</guid>
-      <source url="https://ivwv.github.io/rss.xml">我的项目整合</source>
+      <link>https://autumnwhj.github.io/posts/project/</link>
+      <guid>https://autumnwhj.github.io/posts/project/</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">我的项目整合</source>
       <description>我的项目整合  我的项目列表</description>
       <category>我的项目整合</category>
       <pubDate>Sun, 31 Jul 2022 00:00:00 GMT</pubDate>
@@ -562,9 +562,9 @@ more 注释之前的内容被视为文章摘要。
     </item>
     <item>
       <title>黑马案例大事件项目</title>
-      <link>https://ivwv.github.io/posts/project/api-server/</link>
-      <guid>https://ivwv.github.io/posts/project/api-server/</guid>
-      <source url="https://ivwv.github.io/rss.xml">黑马案例大事件项目</source>
+      <link>https://autumnwhj.github.io/posts/project/api-server/</link>
+      <guid>https://autumnwhj.github.io/posts/project/api-server/</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">黑马案例大事件项目</source>
       <description>黑马案例大事件项目  黑马视频教程-大事件项目后台接口项目 使用 `node`+`express`+`mysql`+`Postman`+`JsonWebToken`+`joi`+`bcryptjs`+`multer`</description>
       <category>我的项目整合</category>
       <category>Node</category>
@@ -581,9 +581,9 @@ more 注释之前的内容被视为文章摘要。
     </item>
     <item>
       <title>Bilibili 视频下载</title>
-      <link>https://ivwv.github.io/posts/project/bilibili-video-download/</link>
-      <guid>https://ivwv.github.io/posts/project/bilibili-video-download/</guid>
-      <source url="https://ivwv.github.io/rss.xml">Bilibili 视频下载</source>
+      <link>https://autumnwhj.github.io/posts/project/bilibili-video-download/</link>
+      <guid>https://autumnwhj.github.io/posts/project/bilibili-video-download/</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">Bilibili 视频下载</source>
       <description>Bilibili 视频下载,可以下载多集数视频   使用Node将 Bilibili 视频下载,可以下载多集数视频,修改配置即可</description>
       <category>我的项目整合</category>
       <category>Node</category>
@@ -607,9 +607,9 @@ more 注释之前的内容被视为文章摘要。
     </item>
     <item>
       <title>使用Node - axios+cheerio 批量爬取某网站 Gif动图</title>
-      <link>https://ivwv.github.io/posts/project/demo/spider-get-gif.html</link>
-      <guid>https://ivwv.github.io/posts/project/demo/spider-get-gif.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">使用Node - axios+cheerio 批量爬取某网站 Gif动图</source>
+      <link>https://autumnwhj.github.io/posts/project/demo/spider-get-gif.html</link>
+      <guid>https://autumnwhj.github.io/posts/project/demo/spider-get-gif.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">使用Node - axios+cheerio 批量爬取某网站 Gif动图</source>
       <description>使用Node - axios+cheerio 批量爬取某网站 Gif动图</description>
       <category>我的项目整合</category>
       <category>案例</category>
@@ -661,9 +661,9 @@ more 注释之前的内容被视为文章摘要。
     </item>
     <item>
       <title>基于Nodejs的视频流播放</title>
-      <link>https://ivwv.github.io/posts/project/demo/video-stream-demo.html</link>
-      <guid>https://ivwv.github.io/posts/project/demo/video-stream-demo.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">基于Nodejs的视频流播放</source>
+      <link>https://autumnwhj.github.io/posts/project/demo/video-stream-demo.html</link>
+      <guid>https://autumnwhj.github.io/posts/project/demo/video-stream-demo.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">基于Nodejs的视频流播放</source>
       <description>基于Nodejs的视频流播放</description>
       <category>我的项目整合</category>
       <category>案例</category>
@@ -738,9 +738,9 @@ app<span>.</span><span>listen</span><span>(</span>port<span>,</span> <span>(</sp
     </item>
     <item>
       <title>新闻门户网站</title>
-      <link>https://ivwv.github.io/posts/project/newsinfo/</link>
-      <guid>https://ivwv.github.io/posts/project/newsinfo/</guid>
-      <source url="https://ivwv.github.io/rss.xml">新闻门户网站</source>
+      <link>https://autumnwhj.github.io/posts/project/newsinfo/</link>
+      <guid>https://autumnwhj.github.io/posts/project/newsinfo/</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">新闻门户网站</source>
       <description>新闻门户网站   该项目是在大二期间，学校举办的技能节，参加了`web`项目。比赛内容是做出一个新闻门户网站，两人一组。犹豫队友平时比较忙，我就让他帮我找找素材啥的，然后让他做了一个`index.html`首页</description>
       <category>我的项目整合</category>
       <pubDate>Mon, 01 Aug 2022 00:00:00 GMT</pubDate>
@@ -805,9 +805,9 @@ app<span>.</span><span>listen</span><span>(</span>port<span>,</span> <span>(</sp
     </item>
     <item>
       <title>Puppeteer爬取Eletron官网文档并保存为pdf格式</title>
-      <link>https://ivwv.github.io/posts/project/puppeteer-electron-pdf/</link>
-      <guid>https://ivwv.github.io/posts/project/puppeteer-electron-pdf/</guid>
-      <source url="https://ivwv.github.io/rss.xml">Puppeteer爬取Eletron官网文档并保存为pdf格式</source>
+      <link>https://autumnwhj.github.io/posts/project/puppeteer-electron-pdf/</link>
+      <guid>https://autumnwhj.github.io/posts/project/puppeteer-electron-pdf/</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">Puppeteer爬取Eletron官网文档并保存为pdf格式</source>
       <description>Puppeteer爬取Eletron官网文档并保存为pdf格式</description>
       <category>我的项目整合</category>
       <category>Puppeteer</category>
@@ -1050,9 +1050,9 @@ module<span>.</span>exports <span>=</span> <span>class</span> <span>PdfUtils</sp
     </item>
     <item>
       <title>Node socket.io 聊天室</title>
-      <link>https://ivwv.github.io/posts/project/socket-chat/</link>
-      <guid>https://ivwv.github.io/posts/project/socket-chat/</guid>
-      <source url="https://ivwv.github.io/rss.xml">Node socket.io 聊天室</source>
+      <link>https://autumnwhj.github.io/posts/project/socket-chat/</link>
+      <guid>https://autumnwhj.github.io/posts/project/socket-chat/</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">Node socket.io 聊天室</source>
       <description>Node socket.io 聊天室   Node socket.io 聊天室 包含用户名自定义、多人房间、用户进入房间全局提示、用户退出全局提示、用户打字中全局提示</description>
       <category>我的项目整合</category>
       <category>Node</category>
@@ -1077,9 +1077,9 @@ module<span>.</span>exports <span>=</span> <span>class</span> <span>PdfUtils</sp
     </item>
     <item>
       <title>电商后台管理项目</title>
-      <link>https://ivwv.github.io/posts/project/vue-shop/</link>
-      <guid>https://ivwv.github.io/posts/project/vue-shop/</guid>
-      <source url="https://ivwv.github.io/rss.xml">电商后台管理项目</source>
+      <link>https://autumnwhj.github.io/posts/project/vue-shop/</link>
+      <guid>https://autumnwhj.github.io/posts/project/vue-shop/</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">电商后台管理项目</source>
       <description>电商后台管理项目  Vue2+ElementUi+Node+Axios 电商后台管理项目。</description>
       <category>我的项目整合</category>
       <pubDate>Sun, 31 Jul 2022 00:00:00 GMT</pubDate>
@@ -1112,9 +1112,9 @@ module<span>.</span>exports <span>=</span> <span>class</span> <span>PdfUtils</sp
     </item>
     <item>
       <title>那些前端开发神级网站</title>
-      <link>https://ivwv.github.io/posts/share/frontend/frontend-dev-god-web-site.html</link>
-      <guid>https://ivwv.github.io/posts/share/frontend/frontend-dev-god-web-site.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">那些前端开发神级网站</source>
+      <link>https://autumnwhj.github.io/posts/share/frontend/frontend-dev-god-web-site.html</link>
+      <guid>https://autumnwhj.github.io/posts/share/frontend/frontend-dev-god-web-site.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">那些前端开发神级网站</source>
       <description>那些前端开发神级网站</description>
       <category>实用分享</category>
       <category>FrontEnd</category>
@@ -1215,9 +1215,9 @@ Smartmockup能够根据你上传的图片(产品素材)，直接在网页上生�
     </item>
     <item>
       <title>stackblitz 在线编辑器实用技巧</title>
-      <link>https://ivwv.github.io/posts/share/frontend/stackblitz-script-with-github.html</link>
-      <guid>https://ivwv.github.io/posts/share/frontend/stackblitz-script-with-github.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">stackblitz 在线编辑器实用技巧</source>
+      <link>https://autumnwhj.github.io/posts/share/frontend/stackblitz-script-with-github.html</link>
+      <guid>https://autumnwhj.github.io/posts/share/frontend/stackblitz-script-with-github.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">stackblitz 在线编辑器实用技巧</source>
       <description>stackblitz 在线编辑器实用技巧 可以直接在线编辑器中运行 GitHub 前端项目 自动安装npm包 自动运行</description>
       <category>实用分享</category>
       <category>FrontEnd</category>
@@ -1254,9 +1254,9 @@ Smartmockup能够根据你上传的图片(产品素材)，直接在网页上生�
     </item>
     <item>
       <title>PicGo+Typora 配合 Github 搭建个人图床</title>
-      <link>https://ivwv.github.io/posts/share/imgur/typora-picgo-github-picur.html</link>
-      <guid>https://ivwv.github.io/posts/share/imgur/typora-picgo-github-picur.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">PicGo+Typora 配合 Github 搭建个人图床</source>
+      <link>https://autumnwhj.github.io/posts/share/imgur/typora-picgo-github-picur.html</link>
+      <guid>https://autumnwhj.github.io/posts/share/imgur/typora-picgo-github-picur.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">PicGo+Typora 配合 Github 搭建个人图床</source>
       <description>PicGo+Typora 配合 Github 搭建个人图床</description>
       <category>实用分享</category>
       <category>图床</category>
@@ -1366,9 +1366,9 @@ Smartmockup能够根据你上传的图片(产品素材)，直接在网页上生�
     </item>
     <item>
       <title>markdown通用Emoji表情大全</title>
-      <link>https://ivwv.github.io/posts/share/mark-down/emoji.html</link>
-      <guid>https://ivwv.github.io/posts/share/mark-down/emoji.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">markdown通用Emoji表情大全</source>
+      <link>https://autumnwhj.github.io/posts/share/mark-down/emoji.html</link>
+      <guid>https://autumnwhj.github.io/posts/share/mark-down/emoji.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">markdown通用Emoji表情大全</source>
       <description>markdown通用Emoji表情大全</description>
       <category>实用分享</category>
       <category>Markdown</category>
@@ -3215,9 +3215,9 @@ Smartmockup能够根据你上传的图片(产品素材)，直接在网页上生�
     </item>
     <item>
       <title>aria2c 轻量终端下载神器</title>
-      <link>https://ivwv.github.io/posts/share/tools/aria2c.html</link>
-      <guid>https://ivwv.github.io/posts/share/tools/aria2c.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">aria2c 轻量终端下载神器</source>
+      <link>https://autumnwhj.github.io/posts/share/tools/aria2c.html</link>
+      <guid>https://autumnwhj.github.io/posts/share/tools/aria2c.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">aria2c 轻量终端下载神器</source>
       <description>aria2c 轻量终端下载神器 支持多线程、断点续传、分块下载、支持 HTTP/HTTPS/FTP/BT/磁力链/磁盘缓存等</description>
       <category>实用分享</category>
       <category>Tools</category>
@@ -3298,9 +3298,9 @@ https://images.pexels.com/photos/2343468/pexels-photo-2343468.jpeg
     </item>
     <item>
       <title>如何使用js将表单选中的文件转化为Base64编码格式</title>
-      <link>https://ivwv.github.io/posts/technology/javascript/js-input-file-to-base64.html</link>
-      <guid>https://ivwv.github.io/posts/technology/javascript/js-input-file-to-base64.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">如何使用js将表单选中的文件转化为Base64编码格式</source>
+      <link>https://autumnwhj.github.io/posts/technology/javascript/js-input-file-to-base64.html</link>
+      <guid>https://autumnwhj.github.io/posts/technology/javascript/js-input-file-to-base64.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">如何使用js将表单选中的文件转化为Base64编码格式</source>
       <description>如何使用js将表单选中的文件转化为Base64编码格式  使用`Promise`封装一个一个方法，将`File` 对象转化为`Base64`编码格式。</description>
       <category>技术文章</category>
       <category>JavaScript</category>
@@ -3343,9 +3343,9 @@ https://images.pexels.com/photos/2343468/pexels-photo-2343468.jpeg
     </item>
     <item>
       <title>JavaScript手写Array的39个内置函数</title>
-      <link>https://ivwv.github.io/posts/technology/javascript/write-array.html</link>
-      <guid>https://ivwv.github.io/posts/technology/javascript/write-array.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">JavaScript手写Array的39个内置函数</source>
+      <link>https://autumnwhj.github.io/posts/technology/javascript/write-array.html</link>
+      <guid>https://autumnwhj.github.io/posts/technology/javascript/write-array.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">JavaScript手写Array的39个内置函数</source>
       <description>JavaScript手写Array的39个内置函数(特全)</description>
       <category>技术文章</category>
       <category>JavaScript</category>
@@ -4001,9 +4001,9 @@ values() 方法返回一个新的 Array Iterator 对象，该对象包含数组�
     </item>
     <item>
       <title>你不知道的 console.log 替代品😮</title>
-      <link>https://ivwv.github.io/posts/technology/javascript/you-dont-know-console.html</link>
-      <guid>https://ivwv.github.io/posts/technology/javascript/you-dont-know-console.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">你不知道的 console.log 替代品😮</source>
+      <link>https://autumnwhj.github.io/posts/technology/javascript/you-dont-know-console.html</link>
+      <guid>https://autumnwhj.github.io/posts/technology/javascript/you-dont-know-console.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">你不知道的 console.log 替代品😮</source>
       <description>你不知道的 console.log 替代品😮   这篇文章介绍了`console`意想不到的使用方法。</description>
       <category>技术文章</category>
       <category>JavaScript</category>
@@ -4112,9 +4112,9 @@ console<span>.</span><span>log</span><span>(</span><span>"World"</span><span>)</
     </item>
     <item>
       <title>如何将命令行参数传递给 Node.js 应用程序？</title>
-      <link>https://ivwv.github.io/posts/technology/node/how-to-pass-cmd-line-args-to-node.html</link>
-      <guid>https://ivwv.github.io/posts/technology/node/how-to-pass-cmd-line-args-to-node.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">如何将命令行参数传递给 Node.js 应用程序？</source>
+      <link>https://autumnwhj.github.io/posts/technology/node/how-to-pass-cmd-line-args-to-node.html</link>
+      <guid>https://autumnwhj.github.io/posts/technology/node/how-to-pass-cmd-line-args-to-node.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">如何将命令行参数传递给 Node.js 应用程序？</source>
       <description>如何将命令行参数传递给 Node.js 应用程序？   与可以使用语法将参数传递给脚本的 `Bash` 脚本类似，您也可以将参数`$1`传递给 `Node.js` 应用程序。</description>
       <category>技术文章</category>
       <category>Node</category>
@@ -4167,9 +4167,9 @@ process<span>.</span>argv<span>.</span><span>forEach</span><span>(</span><span>(
     </item>
     <item>
       <title>GitHub OAuth第三方登录示例教程(Node后端)</title>
-      <link>https://ivwv.github.io/posts/technology/oauth/github-oauth.html</link>
-      <guid>https://ivwv.github.io/posts/technology/oauth/github-oauth.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">GitHub OAuth第三方登录示例教程(Node后端)</source>
+      <link>https://autumnwhj.github.io/posts/technology/oauth/github-oauth.html</link>
+      <guid>https://autumnwhj.github.io/posts/technology/oauth/github-oauth.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">GitHub OAuth第三方登录示例教程(Node后端)</source>
       <description>GitHub OAuth第三方登录示例教程(Node后端)  很多网站登录时，允许使用第三方网站的身份，这称为"第三方登录"。</description>
       <category>技术文章</category>
       <category>OAuth</category>
@@ -4418,9 +4418,9 @@ console<span>.</span><span>log</span><span>(</span>response<span>.</span>data<sp
     </item>
     <item>
       <title>VSCode修改扩展和用户文件夹目录位置(Windows)</title>
-      <link>https://ivwv.github.io/posts/technology/vscode/windows-change-extensions-userdata-position.html</link>
-      <guid>https://ivwv.github.io/posts/technology/vscode/windows-change-extensions-userdata-position.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">VSCode修改扩展和用户文件夹目录位置(Windows)</source>
+      <link>https://autumnwhj.github.io/posts/technology/vscode/windows-change-extensions-userdata-position.html</link>
+      <guid>https://autumnwhj.github.io/posts/technology/vscode/windows-change-extensions-userdata-position.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">VSCode修改扩展和用户文件夹目录位置(Windows)</source>
       <description>VSCode修改扩展和用户文件夹目录位置(Windows)  Windows修改extensions扩展目录以及user-data用户文件夹目录位置，减少C盘压力</description>
       <category>技术文章</category>
       <category>VSCode</category>
@@ -4596,9 +4596,9 @@ Windows Registry Editor Version 5.00
     </item>
     <item>
       <title>Vuepress-theme-hope-iconfont 图标大全</title>
-      <link>https://ivwv.github.io/posts/technology/vuepress/vuepress-hope-iconfont.html</link>
-      <guid>https://ivwv.github.io/posts/technology/vuepress/vuepress-hope-iconfont.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">Vuepress-theme-hope-iconfont 图标大全</source>
+      <link>https://autumnwhj.github.io/posts/technology/vuepress/vuepress-hope-iconfont.html</link>
+      <guid>https://autumnwhj.github.io/posts/technology/vuepress/vuepress-hope-iconfont.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">Vuepress-theme-hope-iconfont 图标大全</source>
       <description>Vuepress-theme-hope-iconfont 图标大全</description>
       <category>技术文章</category>
       <category>Vuepress</category>
@@ -4609,9 +4609,9 @@ Windows Registry Editor Version 5.00
     </item>
     <item>
       <title>Vuepress2中如何在md文件中添加自定义组件</title>
-      <link>https://ivwv.github.io/posts/technology/vuepress/vuepress-register-components.html</link>
-      <guid>https://ivwv.github.io/posts/technology/vuepress/vuepress-register-components.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">Vuepress2中如何在md文件中添加自定义组件</source>
+      <link>https://autumnwhj.github.io/posts/technology/vuepress/vuepress-register-components.html</link>
+      <guid>https://autumnwhj.github.io/posts/technology/vuepress/vuepress-register-components.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">Vuepress2中如何在md文件中添加自定义组件</source>
       <description>Vuepress2中如何在md文件中添加自定义组件</description>
       <category>技术文章</category>
       <category>Vuepress</category>
@@ -4658,9 +4658,9 @@ Windows Registry Editor Version 5.00
     </item>
     <item>
       <title>ES6在前端的模块导入与导出</title>
-      <link>https://ivwv.github.io/posts/notes/javascript/es6/ES6%E5%9C%A8%E5%89%8D%E7%AB%AF%E7%9A%84%E6%A8%A1%E5%9D%97%E5%AF%BC%E5%85%A5%E4%B8%8E%E5%AF%BC%E5%87%BA.html</link>
-      <guid>https://ivwv.github.io/posts/notes/javascript/es6/ES6%E5%9C%A8%E5%89%8D%E7%AB%AF%E7%9A%84%E6%A8%A1%E5%9D%97%E5%AF%BC%E5%85%A5%E4%B8%8E%E5%AF%BC%E5%87%BA.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">ES6在前端的模块导入与导出</source>
+      <link>https://autumnwhj.github.io/posts/notes/javascript/es6/ES6%E5%9C%A8%E5%89%8D%E7%AB%AF%E7%9A%84%E6%A8%A1%E5%9D%97%E5%AF%BC%E5%85%A5%E4%B8%8E%E5%AF%BC%E5%87%BA.html</link>
+      <guid>https://autumnwhj.github.io/posts/notes/javascript/es6/ES6%E5%9C%A8%E5%89%8D%E7%AB%AF%E7%9A%84%E6%A8%A1%E5%9D%97%E5%AF%BC%E5%85%A5%E4%B8%8E%E5%AF%BC%E5%87%BA.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">ES6在前端的模块导入与导出</source>
       <description>ES6在前端的模块导入与导出  es6模块化导入与导出自己的整理</description>
       <category>我的学习笔记</category>
       <category>JavaScript</category>
@@ -4768,9 +4768,9 @@ Windows Registry Editor Version 5.00
     </item>
     <item>
       <title>Javascript面对对象编程</title>
-      <link>https://ivwv.github.io/posts/notes/javascript/es6/Javascript%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B.html</link>
-      <guid>https://ivwv.github.io/posts/notes/javascript/es6/Javascript%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">Javascript面对对象编程</source>
+      <link>https://autumnwhj.github.io/posts/notes/javascript/es6/Javascript%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B.html</link>
+      <guid>https://autumnwhj.github.io/posts/notes/javascript/es6/Javascript%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">Javascript面对对象编程</source>
       <description>Javascript面对对象编程  面向对象相关的笔记</description>
       <category>我的学习笔记</category>
       <category>JavaScript</category>
@@ -4908,9 +4908,9 @@ son<span>.</span><span>say</span><span>(</span><span>)</span><span>;</span> <spa
     </item>
     <item>
       <title>ES6中数组过滤的四种方法</title>
-      <link>https://ivwv.github.io/posts/notes/javascript/es6/array-filter.html</link>
-      <guid>https://ivwv.github.io/posts/notes/javascript/es6/array-filter.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">ES6中数组过滤的四种方法</source>
+      <link>https://autumnwhj.github.io/posts/notes/javascript/es6/array-filter.html</link>
+      <guid>https://autumnwhj.github.io/posts/notes/javascript/es6/array-filter.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">ES6中数组过滤的四种方法</source>
       <description>ES6中数组过滤的四种方法  `forEach` `some` `every` `reduce` 数组过滤的四种方法</description>
       <category>我的学习笔记</category>
       <category>JavaScript</category>
@@ -5077,9 +5077,9 @@ console<span>.</span><span>log</span><span>(</span>amt<span>)</span><span>;</spa
     </item>
     <item>
       <title>原型</title>
-      <link>https://ivwv.github.io/posts/notes/javascript/es6/%E5%8E%9F%E5%9E%8B.html</link>
-      <guid>https://ivwv.github.io/posts/notes/javascript/es6/%E5%8E%9F%E5%9E%8B.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">原型</source>
+      <link>https://autumnwhj.github.io/posts/notes/javascript/es6/%E5%8E%9F%E5%9E%8B.html</link>
+      <guid>https://autumnwhj.github.io/posts/notes/javascript/es6/%E5%8E%9F%E5%9E%8B.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">原型</source>
       <description>JavaScript原型链  原型相关的笔记</description>
       <category>我的学习笔记</category>
       <category>JavaScript</category>
@@ -5381,9 +5381,9 @@ zxy<span>.</span><span>sing</span><span>(</span><span>)</span><span>;</span>
     </item>
     <item>
       <title>对象方法：Object.defineProperty</title>
-      <link>https://ivwv.github.io/posts/notes/javascript/es6/%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95%EF%BC%9AObject.defineProperty.html</link>
-      <guid>https://ivwv.github.io/posts/notes/javascript/es6/%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95%EF%BC%9AObject.defineProperty.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">对象方法：Object.defineProperty</source>
+      <link>https://autumnwhj.github.io/posts/notes/javascript/es6/%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95%EF%BC%9AObject.defineProperty.html</link>
+      <guid>https://autumnwhj.github.io/posts/notes/javascript/es6/%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95%EF%BC%9AObject.defineProperty.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">对象方法：Object.defineProperty</source>
       <description>对象方法：Object.defineProperty  面向对象相关的笔记</description>
       <category>我的学习笔记</category>
       <category>JavaScript</category>
@@ -5419,9 +5419,9 @@ zxy<span>.</span><span>sing</span><span>(</span><span>)</span><span>;</span>
     </item>
     <item>
       <title>类的本质</title>
-      <link>https://ivwv.github.io/posts/notes/javascript/es6/%E7%B1%BB%E7%9A%84%E6%9C%AC%E8%B4%A8.html</link>
-      <guid>https://ivwv.github.io/posts/notes/javascript/es6/%E7%B1%BB%E7%9A%84%E6%9C%AC%E8%B4%A8.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">类的本质</source>
+      <link>https://autumnwhj.github.io/posts/notes/javascript/es6/%E7%B1%BB%E7%9A%84%E6%9C%AC%E8%B4%A8.html</link>
+      <guid>https://autumnwhj.github.io/posts/notes/javascript/es6/%E7%B1%BB%E7%9A%84%E6%9C%AC%E8%B4%A8.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">类的本质</source>
       <description>类的本质  面向对象相关的笔记</description>
       <category>我的学习笔记</category>
       <category>JavaScript</category>
@@ -5474,9 +5474,9 @@ console<span>.</span><span>log</span><span>(</span>ldh<span>.</span>__proto__ <s
     </item>
     <item>
       <title>Express中jwt验证的简单使用</title>
-      <link>https://ivwv.github.io/posts/notes/node/express/Express%E4%B8%ADjwt%E9%AA%8C%E8%AF%81%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html</link>
-      <guid>https://ivwv.github.io/posts/notes/node/express/Express%E4%B8%ADjwt%E9%AA%8C%E8%AF%81%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">Express中jwt验证的简单使用</source>
+      <link>https://autumnwhj.github.io/posts/notes/node/express/Express%E4%B8%ADjwt%E9%AA%8C%E8%AF%81%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html</link>
+      <guid>https://autumnwhj.github.io/posts/notes/node/express/Express%E4%B8%ADjwt%E9%AA%8C%E8%AF%81%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">Express中jwt验证的简单使用</source>
       <description>Express中jwt验证的简单使用  express框架和jsonwebtoken插件的应用</description>
       <category>我的学习笔记</category>
       <category>Node</category>
@@ -5707,9 +5707,9 @@ app<span>.</span><span>listen</span><span>(</span><span>8888</span><span>,</span
     </item>
     <item>
       <title>process.env环境变量配置</title>
-      <link>https://ivwv.github.io/posts/notes/node/other/process.env%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.html</link>
-      <guid>https://ivwv.github.io/posts/notes/node/other/process.env%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">process.env环境变量配置</source>
+      <link>https://autumnwhj.github.io/posts/notes/node/other/process.env%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.html</link>
+      <guid>https://autumnwhj.github.io/posts/notes/node/other/process.env%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">process.env环境变量配置</source>
       <description>process.env环境变量配置  Node 环境变量配置</description>
       <category>我的学习笔记</category>
       <category>Node</category>
@@ -5839,9 +5839,9 @@ unset NODE_ENV
     </item>
     <item>
       <title>Vue2学习笔记</title>
-      <link>https://ivwv.github.io/posts/notes/vue/vue2/vue2-note-part.html</link>
-      <guid>https://ivwv.github.io/posts/notes/vue/vue2/vue2-note-part.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">Vue2学习笔记</source>
+      <link>https://autumnwhj.github.io/posts/notes/vue/vue2/vue2-note-part.html</link>
+      <guid>https://autumnwhj.github.io/posts/notes/vue/vue2/vue2-note-part.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">Vue2学习笔记</source>
       <description>Vue2学习笔记  组件之间的数据共享、$refs引用DOM、动态组件、插槽、自定义指令</description>
       <category>我的学习笔记</category>
       <category>Vue2</category>
@@ -6405,9 +6405,9 @@ export default {
     </item>
     <item>
       <title>vue3全局挂载axios</title>
-      <link>https://ivwv.github.io/posts/notes/vue/vue3/vue3-global-axios.html</link>
-      <guid>https://ivwv.github.io/posts/notes/vue/vue3/vue3-global-axios.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">vue3全局挂载axios</source>
+      <link>https://autumnwhj.github.io/posts/notes/vue/vue3/vue3-global-axios.html</link>
+      <guid>https://autumnwhj.github.io/posts/notes/vue/vue3/vue3-global-axios.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">vue3全局挂载axios</source>
       <description>vue3全局挂载axios  如何在vue3项目中全局配置axios</description>
       <category>我的学习笔记</category>
       <category>Vue3</category>
@@ -6467,9 +6467,9 @@ export default {
     </item>
     <item>
       <title>Vuex使用</title>
-      <link>https://ivwv.github.io/posts/notes/vue/vue3/vuex-use.html</link>
-      <guid>https://ivwv.github.io/posts/notes/vue/vue3/vuex-use.html</guid>
-      <source url="https://ivwv.github.io/rss.xml">Vuex使用</source>
+      <link>https://autumnwhj.github.io/posts/notes/vue/vue3/vuex-use.html</link>
+      <guid>https://autumnwhj.github.io/posts/notes/vue/vue3/vuex-use.html</guid>
+      <source url="https://autumnwhj.github.io/rss.xml">Vuex使用</source>
       <description>如何使用js将表单选中的文件转化为Base64编码格式  Vuex学习笔记</description>
       <category>我的学习笔记</category>
       <category>Vue3</category>
