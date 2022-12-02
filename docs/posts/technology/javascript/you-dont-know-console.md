@@ -67,9 +67,6 @@ console.log("testing");
 console.groupEnd();
 ```
 
-![img](https://public-1310720021.cos.ap-shanghai.myqcloud.com/img/https/user-images.githubusercontent.com/76736580/2022-08-07-16:45:47*182370493-7767d697-e566-4c49-92cb-05d165ab2436*9.png)
-
-不错吧？
 
 ### `console.table`
 
@@ -79,8 +76,6 @@ console.groupEnd();
 const arr = [1, 2, 3, 4, 5];
 console.table(arr);
 ```
-
-![img](https://public-1310720021.cos.ap-shanghai.myqcloud.com/img/https/user-images.githubusercontent.com/76736580/2022-08-07-16:45:47*182370737-70aaa896-1ab8-4a54-995a-8428980df357*f.png)
 
 ### `console.time`
 
@@ -111,8 +106,6 @@ console.assert(1 === 1, "1 is equal to 1"); // No error
 console.assert(0 === [], "0 is equal to []"); // Error in the console
 ```
 
-![img](https://public-1310720021.cos.ap-shanghai.myqcloud.com/img/https/user-images.githubusercontent.com/76736580/2022-08-07-16:45:47*182371841-3df01141-216a-4727-856b-5cccbc6eadba*6.png)
-
 ### `console.count`
 
 计算某件事发生的次数。
@@ -124,10 +117,6 @@ for (let i = 0; i < 10; i++) {
     i % 2 == 0 ? console.count("counter 1") : console.count("counter 2");
 }
 ```
-
-这给了我们以下结果：
-
-![img](https://public-1310720021.cos.ap-shanghai.myqcloud.com/img/https/user-images.githubusercontent.com/76736580/2022-08-07-16:45:47*182372290-97fa3235-5a8a-4320-965d-caaaf1afcf08*1.png)
 
 ### `console.trace`
 
@@ -157,8 +146,6 @@ for (let i = 0; i < 10; i++) {
 
 现在你可以看到在哪里`console.trace`被调用了。
 
-![img](https://public-1310720021.cos.ap-shanghai.myqcloud.com/img/https/user-images.githubusercontent.com/76736580/2022-08-07-16:45:47*182372829-db2ad062-8c3c-4596-91a4-3c87bf828414*4.png)
-
 ### `debugger`关键词
 
 您可能没有听说过该`debugger`关键字。它是一个用于停止代码执行的关键字。
@@ -175,11 +162,4 @@ buggyCode();
 
 console.log("World");
 ```
-
-这会暂停代码的执行，您可以看到如下内容：
-
-![img](https://public-1310720021.cos.ap-shanghai.myqcloud.com/img/https/user-images.githubusercontent.com/76736580/2022-08-07-16:45:49*182373219-422af3f1-ab37-4555-8459-ebe6e1aae2aa*5.png)
-
 它会告诉您调试器的调用位置。
-
-![img](https://public-1310720021.cos.ap-shanghai.myqcloud.com/img/https/user-images.githubusercontent.com/76736580/2022-08-07-16:45:52*182373345-a98e989b-545c-41a7-ae4a-c0ba55f6ea4c*6.png)

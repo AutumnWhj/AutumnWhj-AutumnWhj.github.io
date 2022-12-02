@@ -70,7 +70,7 @@ export default defineUserConfig({
       "meta",
       {
         property: "twitter:title",
-        content: "❤努力提升自己❤ | Jin's Blog",
+        content: "努力提升自己 | Jin's Blog",
       },
     ],
     [
@@ -188,9 +188,9 @@ export default defineUserConfig({
     seoPlugin({
       // 你的选项
       // hostname为获取当前网站的域名，根据当前网站的域名设置
-      // hostname: "https://ivwv.github.io",
-      hostname: "https://ivwv.github.io",
-      author: "SY",
+      // hostname: "https://autumnwhj.github.io/",
+      hostname: "https://autumnwhj.github.io/",
+      author: "Jin",
       autoDescription: true,
       restrictions: "10+",
     }),

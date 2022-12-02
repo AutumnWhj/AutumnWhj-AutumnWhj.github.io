@@ -23,7 +23,7 @@ timeline: true
 <CountView></CountView>
 
 
-> 使用`Promise`封装一个一个方法，将`File` 对象转化为`Base64`编码格式。
+## 使用`Promise`封装一个一个方法，将`File` 对象转化为`Base64`编码格式。
 
 
 <!-- more -->
@@ -32,22 +32,20 @@ timeline: true
 
 ```js
 const fileToBase64 = (file) => {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-          resolve(reader.result);
-        };
-        reader.onerror = function (error) {
-          reject(error);
-        }
-      });
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      resolve(reader.result);
+    };
+    reader.onerror = function (error) {
+      reject(error);
     }
+  });
+}
 ```
 
-
-
-> 使用
+## 使用
 
 ```html
 <input type="file" multiple id="input">
@@ -55,17 +53,13 @@ const fileToBase64 = (file) => {
 
 ```js {7}
 const selectedFile = document.getElementById('input');
-    selectedFile.addEventListener("change", async function () {
-      for (let i = 0; i < this.files.length; i++) {
-        const file = this.files[i];
-        // console.log(fileList);
-        // 将文件转换为base64格式
-        const base64 = await fileToBase64(file);
-        console.log(base64);
-      }
-    });
+selectedFile.addEventListener("change", async function () {
+  for (let i = 0; i < this.files.length; i++) {
+    const file = this.files[i];
+    // console.log(fileList);
+    // 将文件转换为base64格式
+    const base64 = await fileToBase64(file);
+    console.log(base64);
+  }
+});
 ```
-
-
-
-![file](https://public-1310720021.cos.ap-shanghai.myqcloud.com/img/%E6%A1%8C%E9%9D%A2/2022-08-10-13:08:24*file*4.gif)

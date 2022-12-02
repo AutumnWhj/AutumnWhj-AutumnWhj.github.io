@@ -5,13 +5,13 @@ import sidebar from "./sidebar";
 // import { componentsPlugin } from "vuepress-plugin-components";
 
 export default hopeTheme({
-  hostname: "https://ivwv.github.io",
+  hostname: "https://autumnwhj.github.io/",
 
   darkmode: "toggle",
 
   author: {
-    name: "SY",
-    url: "https://ivwv.github.io",
+    name: "Jin",
+    url: "https://autumnwhj.github.io/",
   },
   // 主题可选色
   themeColor: {
@@ -26,7 +26,7 @@ export default hopeTheme({
 
   logo: "/logo.svg",
 
-  repo: "ivwv/ivwv.github.io",
+  repo: "autumnwhj",
 
   docsDir: "docs",
 
@@ -56,8 +56,8 @@ export default hopeTheme({
     description: "一个前端开发者",
     // intro: "/intro.html",
     medias: {
-      Gitee: "https://www.gitee.com/isyv/",
-      GitHub: "https://www.github.com/ivwv",
+      // Gitee: "https://www.gitee.com/autumnwhj/",
+      GitHub: "https://github.com/autumnwhj",
     },
   },
 
@@ -77,28 +77,28 @@ export default hopeTheme({
     // 以下配置仅供体验，如果你需要评论，请自行配置并使用自己的环境，详见文档。
     // 为了避免打扰主题开发者以及消耗他的资源，请不要在你的正式环境中直接使用下列配置!!!!!
 
-    comment: {
-      /**
-       * Using Giscus
-       */
-      provider: "Giscus",
-      repo: "ivwv/ivwv-blog-Giscus",
-      repoId: "R_kgDOHvHOZQ",
-      category: "Announcements",
-      categoryId: "DIC_kwDOHvHOZc4CQgMY",
-      /**
-       * waline
-       */
-      // comment: true,
-      // provider: "Waline",
-      // serverURL: "https://waline-ivwv-2twtg2b2g-ivwv.vercel.app/", // your server url
-      // dark: "auto", // dark mode: true , false or 'auto'
-      // meta: ["nick", "mail", "link"],
-      // requiredMeta: ["nick", "mail"],
-      // wordLimit: 0,
-      // pageSize: 10,
-      // copyright: true,
-    },
+    // comment: {
+    //   /**
+    //    * Using Giscus
+    //    */
+    //   provider: "Giscus",
+    //   repo: "autumnwhj/autumnwhj-blog-Giscus",
+    //   repoId: "R_kgDOHvHOZQ",
+    //   category: "Announcements",
+    //   categoryId: "DIC_kwDOHvHOZc4CQgMY",
+    //   /**
+    //    * waline
+    //    */
+    //   // comment: true,
+    //   // provider: "Waline",
+    //   // serverURL: "https://waline-ivwv-2twtg2b2g-ivwv.vercel.app/", // your server url
+    //   // dark: "auto", // dark mode: true , false or 'auto'
+    //   // meta: ["nick", "mail", "link"],
+    //   // requiredMeta: ["nick", "mail"],
+    //   // wordLimit: 0,
+    //   // pageSize: 10,
+    //   // copyright: true,
+    // },
 
     mdEnhance: {
       // 改配置仅用于演示，不建议使用

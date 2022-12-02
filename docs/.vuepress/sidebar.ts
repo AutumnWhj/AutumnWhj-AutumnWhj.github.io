@@ -76,14 +76,14 @@ export default sidebar([
             icon: "nodeJS",
             prefix: "express/",
             collapsable: true,
-            children: ["Express中jwt验证的简单使用"],
+            children: [],
           },
           {
             text: "Other",
             icon: "others",
             prefix: "other/",
             collapsable: true,
-            children: ["process.env环境变量配置"],
+            children: [],
           },
         ],
       },
@@ -127,7 +127,7 @@ export default sidebar([
             icon: "vue",
             collapsable: true,
             prefix: "vue3/",
-            children: ["vue3-global-axios", "vuex-use"],
+            children: ["vue3-global-axios"],
           },
         ],
       },
@@ -147,18 +147,11 @@ export default sidebar([
         children: ["vuepress-register-components", "vuepress-hope-iconfont"],
       },
       {
-        text: "OAuth登录",
-        collapsable: true,
-        icon: "lock",
-        prefix: "oauth/",
-        children: ["github-oauth"],
-      },
-      {
         text: "Node相关",
         collapsable: true,
         icon: "lock",
         prefix: "node/",
-        children: ["how-to-pass-cmd-line-args-to-node"],
+        children: [],
       },
       {
         text: "JavaScript相关",
@@ -168,15 +161,7 @@ export default sidebar([
         children: [
           "you-dont-know-console",
           "js-input-file-to-base64",
-          "write-array",
         ],
-      },
-      {
-        text: "VSCode技巧",
-        collapsable: true,
-        icon: "strong",
-        prefix: "vscode/",
-        children: ["windows-change-extensions-userdata-position"],
       },
     ],
   },
@@ -186,13 +171,6 @@ export default sidebar([
     prefix: "/posts/share/",
     collapsable: true,
     children: [
-      {
-        text: "图床",
-        icon: "pic",
-        collapsable: true,
-        prefix: "imgur/",
-        children: ["typora-picgo-github-picur"],
-      },
       {
         text: "Markdown",
         icon: "markdown",
@@ -207,7 +185,6 @@ export default sidebar([
         prefix: "frontend/",
         children: [
           "frontend-dev-god-web-site",
-          "stackblitz-script-with-github",
         ],
       },
       {
