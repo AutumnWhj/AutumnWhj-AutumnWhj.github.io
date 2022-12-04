@@ -6,6 +6,150 @@ export default sidebar([
   // "/slide",
   "/posts/project/",
   {
+    text: "技术文章",
+    icon: "article",
+    prefix: "/posts/technology/",
+    collapsable: true,
+    children: [
+      {
+        text: "CSS",
+        collapsable: true,
+        icon: "css",
+        prefix: "css/",
+        children: [
+          "fade-in-out",
+        ],
+      },
+      {
+        text: "JavaScript",
+        collapsable: true,
+        icon: "javascript",
+        prefix: "javascript/",
+        children: [
+          "you-dont-know-console",
+          "js-input-file-to-base64",
+        ],
+      },
+      {
+        text: "Node",
+        collapsable: true,
+        icon: "nodeJS",
+        prefix: "node/",
+        children: [
+          'v8-garbage'
+        ],
+      },
+      {
+        text: "Vue",
+        collapsable: true,
+        icon: "vue",
+        prefix: "vue/",
+        children: [
+          "vuecli-build",
+        ],
+      },
+      {
+        text: "Build Tool",
+        collapsable: true,
+        icon: "strong",
+        prefix: "built-tool/",
+        children: [
+          "what-is-vite",
+        ],
+      },
+      {
+        text: "CI/CD",
+        collapsable: true,
+        icon: "customize",
+        prefix: "ci-cd/",
+        children: [
+          "how-to-use-github-actions",
+        ],
+      },
+      {
+        text: "Vuepress",
+        icon: "creative",
+        collapsable: true,
+        prefix: "vuepress/",
+        children: ["vuepress-register-components", "vuepress-hope-iconfont"],
+      },
+    ],
+  },
+  {
+    text: "学习笔记",
+    icon: "biji",
+    prefix: "/posts/notes/",
+    collapsable: true,
+    children: [
+      {
+        text: "Node",
+        icon: "nodeJS",
+        collapsable: true,
+        prefix: "node/",
+        children: [
+          // {
+          //   text: "Express框架",
+          //   icon: "nodeJS",
+          //   prefix: "express/",
+          //   collapsable: true,
+          //   children: [],
+          // },
+          // {
+          //   text: "Other",
+          //   icon: "others",
+          //   prefix: "other/",
+          //   collapsable: true,
+          //   children: [],
+          // },
+        ],
+      },
+      {
+        text: "JavaScript",
+        icon: "javascript",
+        collapsable: true,
+        prefix: "javascript/",
+        children: [
+          {
+            text: "ES6",
+            icon: "es6",
+            collapsable: true,
+            prefix: "es6/",
+            children: [
+              "Javascript面对对象编程.md",
+              "原型",
+              "类的本质",
+              "对象方法：Object.defineProperty",
+              "ES6在前端的模块导入与导出",
+              "array-filter",
+            ],
+          },
+        ],
+      },
+      {
+        text: "Vue",
+        icon: "vue",
+        collapsable: true,
+        prefix: "vue/",
+        children: [
+          // {
+          //   text: "Vue2",
+          //   icon: "vue",
+          //   collapsable: true,
+          //   prefix: "vue2/",
+          //   children: ["vue2-note-part"],
+          // },
+          // {
+          //   text: "Vue3",
+          //   icon: "vue",
+          //   collapsable: true,
+          //   prefix: "vue3/",
+          //   children: ["vue3-global-axios"],
+          // },
+        ],
+      },
+    ],
+  },
+  {
     text: "PDF书籍",
     icon: "pdf",
     collapsable: true,
@@ -56,112 +200,6 @@ export default sidebar([
         collapsable: true,
         prefix: "linux/",
         children: ["阮一峰-Bash-脚本教程"],
-      },
-    ],
-  },
-  {
-    text: "学习笔记",
-    icon: "biji",
-    prefix: "/posts/notes/",
-    collapsable: true,
-    children: [
-      {
-        text: "Node",
-        icon: "nodeJS",
-        collapsable: true,
-        prefix: "node/",
-        children: [
-          {
-            text: "Express框架",
-            icon: "nodeJS",
-            prefix: "express/",
-            collapsable: true,
-            children: [],
-          },
-          {
-            text: "Other",
-            icon: "others",
-            prefix: "other/",
-            collapsable: true,
-            children: [],
-          },
-        ],
-      },
-      {
-        text: "JavaScript",
-        icon: "javascript",
-        collapsable: true,
-        prefix: "javascript/",
-        children: [
-          {
-            text: "ES6",
-            icon: "es6",
-            collapsable: true,
-            prefix: "es6/",
-            children: [
-              "Javascript面对对象编程.md",
-              "原型",
-              "类的本质",
-              "对象方法：Object.defineProperty",
-              "ES6在前端的模块导入与导出",
-              "array-filter",
-            ],
-          },
-        ],
-      },
-      {
-        text: "Vue",
-        icon: "vue",
-        collapsable: true,
-        prefix: "vue/",
-        children: [
-          {
-            text: "Vue2",
-            icon: "vue",
-            collapsable: true,
-            prefix: "vue2/",
-            children: ["vue2-note-part"],
-          },
-          {
-            text: "Vue3",
-            icon: "vue",
-            collapsable: true,
-            prefix: "vue3/",
-            children: ["vue3-global-axios"],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    text: "技术文章",
-    icon: "article",
-    prefix: "/posts/technology/",
-    collapsable: true,
-    children: [
-      {
-        text: "Vuepress",
-        icon: "creative",
-        collapsable: true,
-        prefix: "vuepress/",
-        children: ["vuepress-register-components", "vuepress-hope-iconfont"],
-      },
-      {
-        text: "Node相关",
-        collapsable: true,
-        icon: "lock",
-        prefix: "node/",
-        children: [],
-      },
-      {
-        text: "JavaScript相关",
-        collapsable: true,
-        icon: "javascript",
-        prefix: "javascript/",
-        children: [
-          "you-dont-know-console",
-          "js-input-file-to-base64",
-        ],
       },
     ],
   },

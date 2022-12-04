@@ -37,7 +37,7 @@ export default defineUserConfig({
         src: "https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js",
       },
     ],
-    ["link", { rel: "icon", href: "/logo.png" }],
+    ["link", { rel: "icon", href: "/logo.svg" }],
     /**
      * 自定义阿里巴巴适量图标图 //at.alicdn.com/t/c/font_3572268_h0ey3d84gim.css
      * 以后再生成的图标需要重新更换地址
@@ -214,10 +214,10 @@ export default defineUserConfig({
     // 移动端适配
     pwaPlugin({
       showInstall: true,
-      favicon: "https://autumnwhj.github.io/logo.png",
+      favicon: "https://autumnwhj.github.io/logo.svg",
       cachePic: true,
       apple: {
-        icon: "https://autumnwhj.github.io/logo.png",
+        icon: "https://autumnwhj.github.io/logo.svg",
       },
     }),
     // 搜索插件注册
