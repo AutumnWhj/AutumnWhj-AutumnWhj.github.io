@@ -4,7 +4,7 @@
 // 'https://autumnwhj.github.io/'
 // icon 图标
 // document.querySelector('head > link[rel="apple-touch-icon"]').href;
-// 'https://autumnwhj.github.io/logo.png'
+// 'https://autumnwhj.github.io/logo.svg'
 // console.log("2");
 
 /**

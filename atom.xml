@@ -3,22 +3,25 @@
   <id>https://autumnwhj.github.io/</id>
   <title>Jin's Blog</title>
   <subtitle>Jin's Blog</subtitle>
-  <updated>2022-12-02T14:51:57.475Z</updated>
+  <updated>2022-12-05T00:49:39.849Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://autumnwhj.github.io/atom.xml"/>
   <link rel="alternate" href="https://autumnwhj.github.io/"/>
+  <category term="技术文章"/>
+  <category term="构建工具"/>
+  <category term="CI/CD"/>
+  <category term="CSS"/>
+  <category term="Node"/>
+  <category term="Vue"/>
   <category term="使用指南"/>
   <category term="PDF"/>
   <category term="我的项目整合"/>
-  <category term="Node"/>
   <category term="实用分享"/>
   <category term="FrontEnd"/>
   <category term="Markdown"/>
   <category term="Tools"/>
-  <category term="技术文章"/>
   <category term="JavaScript"/>
   <category term="Base64"/>
-  <category term="VSCode"/>
   <category term="Vuepress"/>
   <category term="我的学习笔记"/>
   <category term="Vue2"/>
@@ -27,6 +30,1197 @@
   <contributor>
     <name>Ms.Hope</name>
   </contributor>
+  <entry>
+    <title type="html">初识Vite</title>
+    <id>https://autumnwhj.github.io/posts/technology/built-tool/what-is-vite.html</id>
+    <link href="https://autumnwhj.github.io/posts/technology/built-tool/what-is-vite.html"/>
+    <updated>2022-12-04T15:00:08.000Z</updated>
+    <summary type="html">一个基于浏览器原生 ES Modules 的开发服务器。利用浏览器去解析模块，在服务器端按需编译返回，完全跳过了打包这个概念，服务器随起随用</summary>
+    <content type="html"><![CDATA[<CountView></CountView>
+<h2 id="vite是什么" tabindex="-1"> vite是什么？</h2>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f6009e76565b47e59826183525369d88~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png"></p>
+<blockquote>
+<p>作者尤大: <a href="https://github.com/vitejs/vite" target="_blank" rel="noopener noreferrer">Vite</a>，一个基于浏览器原生 ES Modules 的开发服务器。利用浏览器去解析模块，在服务器端按需编译返回，完全跳过了打包这个概念，服务器随起随用。同时不仅有 Vue 文件支持，还搞定了热更新，而且热更新的速度不会随着模块增多而变慢。</p>
+</blockquote>
+<p>有以下特点：<i>Content not supported</i>1、闪电般冷服务启动（就是输入启动command，如npm run dev 启动会很快）<i>Content not supported</i>2、即时热更新HRM （如<a href="https://webpack.docschina.org/guides/hot-module-replacement/" target="_blank" rel="noopener noreferrer">webpack-dev-server</a> 实现的模块热更新）<i>Content not supported</i>3、真正的按需编译<i>Content not supported</i></p>
+<h2 id="vite与webpack-有什么不同" tabindex="-1"> vite与webpack 有什么不同？</h2>
+<h3 id="webpack" tabindex="-1"> webpack</h3>
+<p>Webpack会把所有资源（包括Javascript，图像，字体和CSS等）打包后置于依赖关系中，如：<i>Content not supported</i>在<code>main.js</code>中引入 <code>a.js</code>和<code>b.js</code></p>
+<div><pre><code><span>// a.js</span>
+<span>const</span> <span>a</span> <span>=</span> <span>(</span><span>)</span> <span>=></span> <span>{</span> <span>return</span> <span>10</span> <span>}</span>
+<span>export</span> <span>{</span> a <span>}</span>
+
+<span>// b.js</span>
+<span>const</span> <span>b</span> <span>=</span> <span>(</span><span>)</span> <span>=></span> <span>{</span> <span>return</span> <span>20</span> <span>}</span>
+<span>export</span> <span>{</span> b <span>}</span>
+<span>// c.js</span>
+<span>import</span> <span>{</span> a <span>}</span> <span>from</span> <span>'./a'</span>
+<span>import</span> <span>{</span> b <span>}</span> <span>from</span> <span>'./b'</span>
+
+<span>const</span> c <span>=</span> <span>return</span> <span>a</span><span>(</span><span>)</span> <span>+</span> <span>b</span><span>(</span><span>)</span>
+<span>export</span> <span>{</span> c <span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><p>经过webpack处理后打包生成<code>bundle.js</code></p>
+<div><pre><code><span>// bundle.js</span>
+<span>const</span> a <span>=</span> <span>10</span><span>;</span>
+<span>const</span> b <span>=</span> <span>20</span><span>;</span>
+<span>const</span> c <span>=</span> <span>return</span> a <span>+</span> b<span>;</span>
+<span>export</span> <span>{</span> c <span>}</span><span>;</span>
+
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div></div></div><p>可以看到bundle.js里面的c模块依赖a和b模块的返回值来计算正确结果，因此如若a模块代码进行了更改，比如<code>a = 30</code> 那么webpack会对<code>bundle.js</code>所有依赖的模块重新打包生成新的<code>bundle.js</code></p>
+<div><pre><code><span>//更改a模块后 生成新的bundle.js</span>
+<span>// bundle.js</span>
+<span>const</span> a <span>=</span> <span>30</span><span>;</span>
+<span>const</span> b <span>=</span> <span>20</span><span>;</span>
+<span>const</span> c <span>=</span> <span>return</span> a <span>+</span> b<span>;</span>
+<span>export</span> <span>{</span> c <span>}</span><span>;</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div></div></div><p>**总结：**修改了 bundle 模块中的一个子模块， 整个 bundle 文件都会重新打包然后输出，随着项目的扩大，整个项目依赖的子模块会越来越多，则需要打包的资源也增多了，打包的时间也会变得越来越长。</p>
+<h3 id="vite" tabindex="-1"> vite</h3>
+<p><strong>重点：不需要打包，省去打包时间</strong><i>Content not supported</i>vite利用浏览器支持的ES Moudle，遇到代码里的import xx  from &quot;xxxxxxx&quot;,就直接去找对应的资源，找到直接引入就完事了。例如，代码里有</p>
+<div><pre><code><span>// a.js</span>
+<span>const</span> <span>a</span> <span>=</span> <span>(</span><span>)</span> <span>=></span> <span>{</span> <span>return</span> <span>10</span> <span>}</span>
+<span>export</span> <span>{</span> a <span>}</span>
+
+<span>// b.js</span>
+<span>const</span> <span>b</span> <span>=</span> <span>(</span><span>)</span> <span>=></span> <span>{</span> <span>return</span> <span>20</span> <span>}</span>
+<span>export</span> <span>{</span> b <span>}</span>
+<span>// c.js</span>
+<span>import</span> <span>{</span> a <span>}</span> <span>from</span> <span>'./a'</span>
+<span>import</span> <span>{</span> b <span>}</span> <span>from</span> <span>'./b'</span>
+
+<span>const</span> c <span>=</span> <span>return</span> <span>a</span><span>(</span><span>)</span> <span>+</span> <span>b</span><span>(</span><span>)</span>
+<span>export</span> <span>{</span> c <span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><p>使用：<i>Content not supported</i><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aa70a0adfe074352b94eb4eeb9a14e75~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png"><i>Content not supported</i>打开控制台可以看到，模块 a b c 三个模块都被请求并加载了！<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bda46f82c2e8411d85265b087bb523fb~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png"><i>Content not supported</i>接下来看看 更改代码的时候，热更新怎样的。<i>Content not supported</i>以下只更改a模块里面的代码<i>Content not supported</i><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/21f61ac17918427c846701855bf0a826~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png"><i>Content not supported</i>可以看到b模块不会更新，只更新了与a依赖的模块c以及vue文件（注意，若是c模块未在代码里使用，尽管更改了模块 a b的代码都是不会在控制台看到加载的，这就是<strong>按需引入</strong>）<i>Content not supported</i></p>
+<h2 id="vite热更新原理是什么" tabindex="-1"> vite热更新原理是什么？</h2>
+<p><i>Content not supported</i><a href="https://segmentfault.com/a/1190000014318751" target="_blank" rel="noopener noreferrer">ES Moudle原理请戳</a><i>Content not supported</i>ES Modules 是用于处理模块的 ECMAScript 标准。 用法：</p>
+<div><pre><code><span>//script导入</span>
+<span>&lt;</span>script type<span>=</span><span>"module"</span> src<span>=</span><span>"index.js"</span><span>></span><span>&lt;</span><span>/</span>script<span>></span>
+
+<span>// import导入</span>
+<span>import</span> Vue <span>from</span> <span>'vue'</span>
+
+<span>// export导出</span>
+<span>export</span> <span>default</span> <span>str</span> <span>=></span> str<span>.</span><span>toUpperCase</span><span>(</span><span>)</span>
+<span>export</span> <span>{</span>a<span>,</span> b<span>,</span> c<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><p>如在vite项目中：<i>Content not supported</i>当服务启动时，vite便对当前import的文件进行了监听，热更新其实就是当文件有更改时，vite会判断更改的是什么文件，而采用对应的plugin对文件进行重新编译处理，而后返回给浏览器。并且会在文件加上时间戳，避免浏览器因为缓存而不更新文件。如更改helloworld.vue里面的代码，websocker会发送一个指令给vite，根据指令来执行不同的更新操作。<i>Content not supported</i><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c392062f20d84a27bb297e467c7128c4~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png"></p>
+<h2 id="vite更新了什么" tabindex="-1"> vite更新了什么？</h2>
+<p>官方中文文档： <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">https://vitejs.dev/</a><i>Content not supported</i>从V1迁移到新版本，最明显的是vue被当成插件plugin抽离出来了，而vite就真真切切成为了一个编译打包工具，新建的时候可以选择需要支持的框架或者单文件</p>
+<div><pre><code><span>// 新建一个project</span>
+npm init @vitejs<span>/</span>app
+</code></pre><div aria-hidden="true"><div></div><div></div></div></div><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/69686e46bfd64b5eaae0adbbb2a07259~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png"><i>Content not supported</i>选择一个vue项目，发现根目录下多了个<code>vite.config.js</code>文件，这也是此次更新的一大块内容，比如对于打包，sourceMap，server都变得易配置。<a href="https://vitejs.dev/config/" target="_blank" rel="noopener noreferrer">详情</a><i>Content not supported</i><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9682879a16004338b60d785d062d2a24~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png"></p>
+]]></content>
+    <category term="技术文章" scheme=""/>
+    <category term="构建工具" scheme=""/>
+    <published>2021-01-07T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">Github Actions的使用</title>
+    <id>https://autumnwhj.github.io/posts/technology/ci-cd/how-to-use-github-actions.html</id>
+    <link href="https://autumnwhj.github.io/posts/technology/ci-cd/how-to-use-github-actions.html"/>
+    <updated>2022-12-05T00:48:45.000Z</updated>
+    <summary type="html">GitHub Actions是github的持续集成服务，简单来讲就是使得你的repository可以执行一些自动化的动作</summary>
+    <content type="html"><![CDATA[<CountView></CountView>
+<h2 id="什么是github-actions" tabindex="-1"> 什么是Github Actions？</h2>
+<blockquote>
+<p>Automate, customize, and execute your software development workflows right in your repository with GitHub Actions. You can discover, create, and share actions to perform any job you'd like, including CI/CD, and combine actions in a completely customized workflow.</p>
+</blockquote>
+<p>GitHub Actions是github的持续集成服务，简单来讲就是使得你的repository可以执行一些自动化的动作，例如：</p>
+<ol>
+<li>每次repository有新的提交或者pr就自动执行自定义好的操作</li>
+<li>在repository中定时执行自定义好的操作</li>
+</ol>
+<p>如在 master 分支上提交了一段代码， GitHub Action 可以自动的帮我部署到我自己的服务器上去，或者它还可以帮我把代码打成镜像，将镜像自动提交到镜像仓库里</p>
+<h3 id="术语和约束" tabindex="-1"> 术语和约束</h3>
+<p>在介绍使用方式之前我们先来了解下GithubActions的术语,借此了解下一次执行过程的流程.</p>
+<ul>
+<li>workflow即工作流,一次执行过程.每个workflow用一个配置文件维护.</li>
+<li>Job: workflow的分解,可串行存在依赖;可并行</li>
+<li>Step: job的分解,即步骤,比如一个step是要给代码做单元测试,那可能会有三个步骤:下载依赖-&gt;测试-&gt;上传结果</li>
+<li>actionworkflow最小执行单元.即每个执行步骤中的具体执行任务,我们可以自己定义action,也可使用Github社区定义好的action</li>
+<li>Artifact： workflow运行时产生的中间文件.包括日志,测试结果等</li>
+<li>Event: 触发workflow的事件</li>
+</ul>
+<p>Github Action对workflow设有如下使用限制:</p>
+<ul>
+<li>一个仓库可最多同时开20个workflows;超过20则排队等待</li>
+<li>一个workflow下的每个job最多运行6小时,超过直接结束</li>
+<li>所有分支下的job根据github级别不同有不同的并行度限制,超过并行度进入队列等待</li>
+<li>1小时内最多1000次执行请求,也就是1.5api/1m</li>
+</ul>
+<p>需要注意,Github对Github Action服务有最终解释权,也就是说乱用可能会被Github限制账户.Github也会生成相关使用统计情况</p>
+<h3 id="workflow的触发" tabindex="-1"> workflow的触发</h3>
+<p>每个workflow的配置文件都需要定义on字段,它用来描述在何种情况(Event)下触发执行.我们可以定义on多种事件,这样<strong>只要满足其中一个就会被触发</strong>
+我们可以将Event分为3类:</p>
+<ul>
+<li>定时事件:由定时任务触发的事件</li>
+<li>手动触发事件: 在actions页面中手动触发的事件</li>
+<li>Webhook事件:由github网站的钩子行为触发的事件,通常Git操作都有钩子可以用于触发</li>
+</ul>
+<h4 id="定时事件" tabindex="-1"> 定时事件</h4>
+<p>最简单的事件就是定时事件其定义方式如下:
+<code>on:   schedule: - cron:  '*/15 * * * *' </code>
+上面定义了一个每隔15分钟执行依次的任务.Github Avtion目前只支持<a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07" target="_blank" rel="noopener noreferrer">crontab语法定义定时任务</a>
+这个事件只会拉取默认分支(一般是master或者main分支,可以在仓库的settings-&gt;branches-&gt;Default branch下修改)的最近一次提交进行执行.</p>
+<h4 id="手动触发事件" tabindex="-1"> 手动触发事件</h4>
+<p>手动触发事件分为两种:</p>
+<ul>
+<li>workflow_dispatch 让用在Actions界面中手动触发workflow 当在workflow中定义了workflow_dispatch后管理页面就会允许指定这个workflow被手动执行,执行时默认需要指定分支,如果我们在配置中定义了参数,则手动执行时也会需要填参数.</li>
+<li>一个典型例子如下:</li>
+</ul>
+<div><pre><code>  <span>on</span><span>:</span>
+      <span>workflow_dispatch</span><span>:</span>
+          <span>inputs</span><span>:</span>
+              <span>name</span><span>:</span>
+                  <span>description</span><span>:</span> <span>'Person to greet'</span>
+                  <span>required</span><span>:</span> <span>true</span>
+                  <span>default</span><span>:</span> <span>'Mona the Octocat'</span>
+              <span>home</span><span>:</span>
+                  <span>description</span><span>:</span> <span>'location'</span>
+                  <span>required</span><span>:</span> <span>false</span>
+                  <span>default</span><span>:</span> <span>'The Octoverse'</span>
+
+  <span>jobs</span><span>:</span>
+      <span>say_hello</span><span>:</span>
+          <span>runs-on</span><span>:</span> ubuntu<span>-</span>latest
+          <span>steps</span><span>:</span>
+          <span>-</span> <span>run</span><span>:</span> <span>|</span><span>
+              echo "Hello \$\{\{ github.event.inputs.name \}\}!"
+              echo "- in \$\{\{ github.event.inputs.home \}\}!"</span>
+
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><ul>
+<li>上面在workflow_dispatch下通过定义inputs设定参数.在jobs中我们则可以在github.event.inputs中取到对应的参数. <strong>注意</strong>如果不定义手动触发事件那么就无法手动触发.</li>
+<li>repository_dispatch让用户通过API批量手动执行这个event的主要作用是让其他的程序通过api调用,通过自定义事件类型来驱动执行.这个event对应的workflow必须在默认分支下定义.比如我们定义:</li>
+</ul>
+<div><pre><code>  <span>on</span><span>:</span>
+      <span>repository_dispatch</span><span>:</span>
+          <span>types</span><span>:</span> <span>[</span>opened<span>,</span> deleted<span>]</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div></div></div><p>然后执行http请求:</p>
+<div><pre><code>  <span>curl</span> <span>\</span>
+  -X POST <span>\</span>
+  -H <span>"Accept: application/vnd.github.v3+json"</span> <span>\</span>
+  https://api.github.com/repos/<span>{</span>namespace<span>}</span>/<span>{</span>repo_name<span>}</span>/dispatches <span>\</span>
+  -d <span>'{"event_type":"opened"}'</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div></div></div><p>那么就可以被执行了.其中的opened, deleted是用户自定义的事件.</p>
+<h4 id="webhook事件" tabindex="-1"> Webhook事件</h4>
+<p>Webhook事件是借由Github的webhook事件触发的事件,具体有哪些可以看<a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#webhook-events" target="_blank" rel="noopener noreferrer">官方文档</a>,本文将只介绍几个常用的和git操作相关的事件.</p>
+<ul>
+<li>create分支,tag创建时触发</li>
+<li>delete分支,tag删除时触发</li>
+<li>gollum仓库的wiki创建或者更新时触发</li>
+<li>push/pull_requestpush是当有对仓库的push操作时触发;pull_request则是在执行pull request中触发这两个事件可以额外限制:上面的限制都允许使用通配符做匹配,支持的通配符包括:pull_request默认的行为是在merge完成后处理merge后的那次提交中的代码. 我们还可以通过types: [...]字段指定细分事件类型,包括:
+<ul>
+<li>branches: [...]指定符合条件的分支触发</li>
+<li>branches-ignore:[...]指定除符合条件的分之外都触发</li>
+<li>tags:[...]指定符合条件的tag触发</li>
+<li>tags-ignore:[...]指定除符合条件的tag外都触发</li>
+<li>paths:[...]代码中有符合条件的路径就触发(至少有一个存在)</li>
+<li>paths-ignore:[...]代码中不存在指定的路径则都触发(至少有一个不存在)</li>
+<li>*: 表示匹配0个或多个非/字符</li>
+<li>**: 表示匹配0个或多个字符.</li>
+<li>?: 表示匹配0个或者一个字符</li>
+<li>+: 表示匹配至少一个字符</li>
+<li>[]: 表示匹配一个范围内的字符,比如[0-9a-f]表示数字和a到f间的字符可以匹配</li>
+<li>!: 在匹配字符串的开头表示否,其他位置没有特殊含义</li>
+<li>assigned被分派到某个issue时触发</li>
+<li>unassigned删除分派时触发</li>
+<li>labeled打标签时触发</li>
+<li>unlabeled取消标签时触发</li>
+<li>opened创建pull request时触发</li>
+<li>edited编辑pull request时触发</li>
+<li>closed关闭pull request时触发</li>
+<li>reopened重新打开pull request时触发</li>
+<li>synchronize同步pull request代码时触发</li>
+<li>ready_for_review,pull request处于ready_for_review状态时触发</li>
+<li>locked,锁定时触发</li>
+<li>unlocked,解锁时触发</li>
+<li>review_requested,code review结束时触发</li>
+<li>review_request_removedcode review请求被删除时触发</li>
+</ul>
+</li>
+<li>release当执行Github release时触发,使用的代码时release时打tag的代码,类似于pull_request,也可以通过types:[...]来指定细分事件.
+<ul>
+<li>published公开后执行</li>
+<li>unpublished取消公开后执行</li>
+<li>created 创建后执行</li>
+<li>edited 编辑后执行</li>
+<li>deleted 删除后执行</li>
+<li>prereleased预发布后执行</li>
+<li>released发布后执行</li>
+</ul>
+</li>
+</ul>
+<h3 id="模板语法" tabindex="-1"> 模板语法</h3>
+<p>我们可以看到上面例子中会有<code>${{ ... }}</code>这样的文字,这是Github Action定义的模板语法,其中...的部分可以是常数,上下文变量,运算符或者预定义的函数调用.</p>
+<h4 id="常数" tabindex="-1"> 常数</h4>
+<p>模板语法支持所有json支持的简单数据类型,也就是null,boolean,number,string.</p>
+<h4 id="上下文变量" tabindex="-1"> 上下文变量</h4>
+<p>每次workflow执行都会带上几个上下文变量用于描述自己和传递参数.具体的可以看<a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#contexts" target="_blank" rel="noopener noreferrer">官方文档</a>.这边只介绍几个常用的</p>
+<ul>
+<li>matrix,执行策略中定义的变量,每次执行每个key只会有一个取值</li>
+<li>env,workflow中env定义的变量</li>
+<li>github,通常用于获取仓库和分支的信息,比较值得关注的有:
+<ul>
+<li>github.repository 执行的仓库名,也就是{namespace}/{repo_name},如果只要repo_name,可以使用<code>${GITHUB_REPOSITORY#*}</code></li>
+<li>github.ref工作流的分支或tag,分支为refs/heads/&lt;branch_name&gt;格式,tag是refs/tags/&lt;tag_name&gt;格式,如果只要tag名可以使用<code>${GITHUB_REF/refs/tags/}</code></li>
+<li><code>${GITHUB_SHA::8}</code>可以用于获得前8位的commit的id值</li>
+<li>github.event.inputs由手动事件触发传入的参数</li>
+</ul>
+</li>
+<li>secrets,项目或命名空间定义的账号密码信息,可以在项目的Settings-&gt;Secrets中设置,一般用于上传package或者docker镜像.</li>
+</ul>
+<h4 id="运算符" tabindex="-1"> 运算符</h4>
+<p>Github Action支持如下运算符</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>()</td>
+<td>逻辑分组</td>
+</tr>
+<tr>
+<td>[ ]</td>
+<td>索引</td>
+</tr>
+<tr>
+<td>.</td>
+<td>属性解除参考</td>
+</tr>
+<tr>
+<td>!</td>
+<td>非</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于或等于</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于或等于</td>
+</tr>
+<tr>
+<td>==</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不等于</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>和</td>
+</tr>
+<tr>
+<td>||</td>
+<td>或</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到这些运算符解百纳都是用于做谓词的.因此同擦汗给你都与if字段配合使用</p>
+<div><pre><code><span>steps</span><span>:</span>
+  <span>...</span>
+  <span>-</span> <span>name</span><span>:</span> The job has failed
+    <span>if</span><span>:</span> $
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div></div></div><p>GitHub Action进行的是宽松的等式比较,其原理是将不同类型的数据转换为数字进行比较: | 类型 | 结果 | | ——– | ——————————————– | | null | 0 | | true | 返回 1 | | false | 返回 0 | | 字符串 | 空字符串为0,符合数字格式的为对应数,否则为NaN | | Array | NaN,在为同一实例时才视为相等 | | Object | NaN,在为同一实例时才视为相等 |
+注意,类似SQL中的NULL,一个 NaN 与另一个 NaN 的比较不会产生 true.</p>
+<h4 id="函数" tabindex="-1"> 函数</h4>
+<p>Github Action支持一些内置函数,比较有用的有:</p>
+<ul>
+<li>contains( search, item ),用于查看序列中是否存在元素</li>
+<li>startsWith( searchString, searchValue)/endsWith( searchString, searchValue),用于查看字符串中是否已特定字符串开头或者结尾</li>
+<li>format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat'),类似python中的string.format(),使用模板字符串拼接字符串结果</li>
+<li>join( array, optionalSeparator ),类似python中的join,用于拼接数组内容为字符串.</li>
+<li>作业状态检查函数success()/always()/cancelled()/failure(),这类函数返回的是bool型数据,因此一般作为谓词与if联合使用</li>
+</ul>
+<h3 id="执行策略" tabindex="-1"> 执行策略</h3>
+<p>执行策略在一级关键字strategy中定义.它用于规定执行器执行workflow的行为.主要包括</p>
+<ul>
+<li>matrix,定义执行矩阵,执行器会遍历矩阵执行作业,matrix中定义的值在执行时可以从上下文matrix中获取</li>
+<li>max-parallel(int)最大并行度</li>
+<li>fail-fast(bool,true)快速失败,任何matrix作业失败,GitHub将取消所有进行中的作业</li>
+</ul>
+<p>上面的例子中我们定义了python-version: [3.6, 3.7, 3.8, 3.9],这也就意味着执行器会以matrix.python-version为3.6, 3.7, 3.8, 3.9分别执行一次.</p>
+<h3 id="使用社区定义好的action" tabindex="-1"> 使用社区定义好的action</h3>
+<p>可以将action理解为执行过程的封装,使用的人只需要知道它的用法而不需要知道它具体怎么实现的,我们可以自己定义action也可以使用外面定义好的action就像我们编程调用函数一样.社区的actions可以在<a href="https://github.com/marketplace?type=actions" target="_blank" rel="noopener noreferrer">marketplace</a>找到
+上面的例子中我们就使用了一个外部定义好的action:actions/setup-python@v2
+使用action用关键字uses来声明,如果action需要参数可以使用with来传入参数</p>
+<div><pre><code> <span>-</span> <span>name</span><span>:</span> Set up Python \$\<span>{</span>\<span>{</span> matrix.python<span>-</span>version \<span>}</span>\<span>}</span>
+    <span>uses</span><span>:</span> actions/setup<span>-</span>python@v2
+    <span>with</span><span>:</span>
+        <span>python-version</span><span>:</span> \$\<span>{</span>\<span>{</span> matrix.python<span>-</span>version \<span>}</span>\<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div></div></div><p>比较常用的action有:</p>
+<ul>
+<li><a href="https://github.com/actions/setup-python" target="_blank" rel="noopener noreferrer">actions/setup-python@v2</a>,自动设置python环境</li>
+<li><a href="https://github.com/marketplace/actions/setup-node-js-environment" target="_blank" rel="noopener noreferrer">actions/setup-node@v1</a>,设置node环境</li>
+<li><a href="https://github.com/marketplace/actions/setup-go-environment" target="_blank" rel="noopener noreferrer">actions/setup-go@v2</a>,设置golang环境</li>
+<li><a href="https://github.com/marketplace/actions/docker-build-push-action" target="_blank" rel="noopener noreferrer">docker/build-push-action@v1</a>,登录docker 镜像仓库</li>
+<li><a href="https://github.com/marketplace/actions/upload-a-build-artifact" target="_blank" rel="noopener noreferrer">actions/upload-artifact@v2</a>,将Artifact发送到workflow的管理界面用于下载</li>
+<li><a href="https://github.com/marketplace/actions/sentry-release" target="_blank" rel="noopener noreferrer">getsentry/action-release@v1</a>,发送消息到sentry</li>
+</ul>
+<h3 id="jobs间的依赖关系" tabindex="-1"> jobs间的依赖关系</h3>
+<p>当我们单纯定义job时这些job会并行执行,而如果希望明确其中的依赖关系,则可以使用关键字needs.needs后的值可以是字符串也可以是字符串为元素的列表</p>
+<div><pre><code><span>jobs</span><span>:</span>
+  <span>build_and_pub_to_pypi</span><span>:</span>
+    <span>...</span>
+  <span>docker-build</span><span>:</span>
+    <span>needs</span><span>:</span> build_and_pub_to_pypi
+
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h2 id="定时提醒到企业微信" tabindex="-1"> 定时提醒到企业微信</h2>
+<p>在项目根目录文件夹<code>.github下面的workflows下创建xx.yml</code>写入如下代码：</p>
+<div><pre><code><span>name</span><span>:</span> 3点几啦！喝杯奶茶先啦
+
+<span># 触发条件</span>
+<span>on</span><span>:</span> 
+  <span># 触发条件1：main分支有提交时候触发</span>
+  <span>push</span><span>:</span>
+    <span>branches</span><span>:</span>
+      <span>-</span> main
+  <span># 触发条件2：定时任务，每天15点触发</span>
+  <span>schedule</span><span>:</span>
+    <span>-</span> <span>cron</span><span>:</span> <span>"0 15 * * *"</span>
+<span>jobs</span><span>:</span>
+  <span>drink_tea</span><span>:</span>
+    <span>runs-on</span><span>:</span> ubuntu<span>-</span>latest
+    <span>steps</span><span>:</span>
+      <span>-</span> <span>name</span><span>:</span> 这就给大家发消息
+        <span>run</span><span>:</span> <span>|</span><span>
+          curl 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key='yourKey'' \
+          -H 'Content-Type: application/json' \
+          -d '
+          {
+                "msgtype": "text",
+                "text": {
+                    "content": "都别给我愣着，赶紧滴干饭🍚"
+                }
+          }'</span>
+
+
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><p>为方便测试，这里有两个触发条件，一个是代码main分支有更新时触发，一个是每天的15点触发。</p>
+<div><pre><code>schedule中cron的值 "* * * * <span>*"表示如下</span>
+┌───────────── 分钟 (0 <span>-</span> 59)
+│ ┌───────────── 小时 (0 <span>-</span> 23)
+│ │ ┌───────────── 日 (1 <span>-</span> 31)
+│ │ │ ┌───────────── 月 (1 <span>-</span> 12 或 JAN<span>-</span>DEC)
+│ │ │ │ ┌───────────── 星期 (0 <span>-</span> 6 或 SUN<span>-</span>SAT)
+│ │ │ │ │
+│ │ │ │ │
+│ │ │ │ │
+* * * * *
+
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><p>而后打开Actions就会开始运行任务。
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/51c9b975f1994302b48b1037f92f6bbc~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png">
+怎么看任务执行成功？ 绿了，且运行没报错
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/43ad475bd7aa4bc9b57f6bf1d3b7e3ef~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png">
+这时候企业微信就收到了干饭🍚的消息。（还可以帮行政小姐姐设置一些繁琐的每天自动提醒工作哟🐶）
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/501b2c18f29d48f7897e4addc4b7f03d~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png"></p>
+<h2 id="定时自动提交commit" tabindex="-1"> 定时自动提交commit</h2>
+<p>github上很简单的一个自动绿的项目，通过定时任务git方式向repository提交代码，使得 yml代码如下：
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/35f422e471094f2c99cb238b5a075bd0~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png"></p>
+<div><pre><code><span>name</span><span>:</span> ci
+
+<span>on</span><span>:</span>
+  <span>push</span><span>:</span>
+    <span>branches</span><span>:</span>
+      <span>-</span> master
+<span>#  schedule:</span>
+<span>#    - cron: "0 0 * * *"</span>
+
+<span>jobs</span><span>:</span>
+  <span>autogreen</span><span>:</span>
+    <span>runs-on</span><span>:</span> ubuntu<span>-</span>latest
+    <span>steps</span><span>:</span>
+      <span>-</span> <span>name</span><span>:</span> Clone repository
+        <span>uses</span><span>:</span> actions/checkout@v2
+      <span>-</span> <span>name</span><span>:</span> Auto green
+        <span>run</span><span>:</span> <span>|</span><span>
+          git config --local user.email "xxx@qq.com"
+          git config --local user.name "Autumn"
+          git remote set-url origin https://`${{ github.actor }}:`${{ secrets.GITHUB_TOKEN }}@github.com/`${{ github.repository }}
+          git pull --rebase
+          git commit --allow-empty -m "a commit a day keeps your girlfriend away"
+          git push</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h2 id="前端ci-cd-pipeline" tabindex="-1"> 前端CI/CD pipeline</h2>
+<p>持续集成（Continuous Integration）是持续部署CD的第一步，持续集成可以理解为在分支代码更新时，自动运行eslint代码风格检查，单元测试以提前发现代码的错误，防止打包后导致系统崩溃等一系列问题。
+这里通过Github Actions建立持续集成工作流workflow来实现前端项目的自动化测试以及发布到COS对象存储。
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/330c589390c5443b8ae4bd84ff88c50b~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<div><pre><code><span>name</span><span>:</span> Lint the code<span>,</span> run tests<span>,</span> build and push OSS
+<span>on</span><span>:</span>
+  <span>push</span><span>:</span>
+    <span>branches</span><span>:</span>
+      <span>-</span> develop
+<span>jobs</span><span>:</span>
+  <span>lint</span><span>:</span>
+    <span>runs-on</span><span>:</span> ubuntu<span>-</span>latest
+    <span>steps</span><span>:</span>
+      <span>-</span> <span>uses</span><span>:</span> actions/checkout@v2
+      <span>-</span> <span>uses</span><span>:</span> actions/setup<span>-</span>node@v1
+        <span>with</span><span>:</span>
+          <span>node-version</span><span>:</span> <span>'14.x'</span>
+
+      <span>-</span> <span>name</span><span>:</span> Install dependencies
+        <span>uses</span><span>:</span> bahmutov/npm<span>-</span>install@v1
+
+      <span>-</span> <span>name</span><span>:</span> Run linter
+        <span>run</span><span>:</span> yarn lint
+  <span>test</span><span>:</span>
+    <span>needs</span><span>:</span> lint
+    <span>runs-on</span><span>:</span> ubuntu<span>-</span>latest
+    <span>steps</span><span>:</span>
+      <span>-</span> <span>uses</span><span>:</span> actions/checkout@v2
+      <span>-</span> <span>uses</span><span>:</span> actions/setup<span>-</span>node@v1
+        <span>with</span><span>:</span>
+          <span>node-version</span><span>:</span> <span>'14.x'</span>
+
+      <span>-</span> <span>name</span><span>:</span> Install dependencies
+        <span>uses</span><span>:</span> bahmutov/npm<span>-</span>install@v1
+
+      <span>-</span> <span>name</span><span>:</span> Run test<span>:</span>unit
+        <span>run</span><span>:</span> yarn test<span>:</span>unit
+  <span>build</span><span>:</span>
+    <span>needs</span><span>:</span> <span>[</span>lint<span>,</span> test<span>]</span>
+    <span>runs-on</span><span>:</span> ubuntu<span>-</span>latest
+    <span>steps</span><span>:</span>
+      <span>-</span> <span>uses</span><span>:</span> actions/checkout@master
+      <span>-</span> <span>uses</span><span>:</span> actions/setup<span>-</span>node@v2
+        <span>with</span><span>:</span>
+          <span>node-version</span><span>:</span> <span>'14.18.0'</span>
+
+      <span>-</span> <span>name</span><span>:</span> Install dependencies
+        <span>uses</span><span>:</span> bahmutov/npm<span>-</span>install@v1
+
+      <span>-</span> <span>name</span><span>:</span> Build
+        <span>run</span><span>:</span> yarn build
+
+      <span>-</span> <span>name</span><span>:</span> Get current time
+        <span>uses</span><span>:</span> 1466587594/get<span>-</span>current<span>-</span>time@v2
+        <span>id</span><span>:</span> current<span>-</span>time
+        <span>with</span><span>:</span>
+          <span>format</span><span>:</span> YYYYMMDDHHmmss
+          <span>utcOffset</span><span>:</span> <span>'+08:00'</span>
+      <span>-</span> <span>name</span><span>:</span> Use current time
+        <span>env</span><span>:</span>
+          <span>F_TIME</span><span>:</span> <span>'`${{ steps.current-time.outputs.formattedTime }}'</span>
+        <span>run</span><span>:</span> echo "NOW=$F_TIME" <span>></span><span>></span> $GITHUB_ENV
+
+      <span>-</span> <span>name</span><span>:</span> Get repository and branch name
+        <span>shell</span><span>:</span> bash
+        <span>run</span><span>:</span> <span>|</span><span>
+          echo "BRANCH=$(echo `${GITHUB_REF#refs/heads/}` | tr / -)" >> $GITHUB_ENV
+          echo "REPOSITORY=$(echo `${GITHUB_REPOSITORY#threfo/}` | tr / -)" >> $GITHUB_ENV
+          echo "PRBRANCH=$(echo `${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV</span>
+
+      <span>-</span> <span>name</span><span>:</span> Upload COS
+        <span>uses</span><span>:</span> zkqiang/tencent<span>-</span>cos<span>-</span>action@v0.1.0
+        <span>with</span><span>:</span>
+          <span>args</span><span>:</span> upload <span>-</span>r ./dist/ /`$<span>{</span><span>{</span> env.REPOSITORY <span>}</span><span>}</span>/`$<span>{</span><span>{</span> env.BRANCH <span>}</span><span>}</span>/default
+          <span>secret_id</span><span>:</span> `$<span>{</span><span>{</span> env.SECRET_ID <span>}</span><span>}</span>
+          <span>secret_key</span><span>:</span> `$<span>{</span><span>{</span> env.SECRET_KEY <span>}</span><span>}</span>
+          bucket<span>:</span>`$<span>{</span><span>{</span> env.BUCKET <span>}</span><span>}</span>
+          region<span>:</span>`$<span>{</span><span>{</span> env.REGION <span>}</span><span>}</span>
+
+      <span>-</span> <span>name</span><span>:</span> Upload COS Backup release
+        <span>uses</span><span>:</span> zkqiang/tencent<span>-</span>cos<span>-</span>action@v0.1.0
+        <span>with</span><span>:</span>
+          <span>args</span><span>:</span> upload <span>-</span>r ./dist/ /`$<span>{</span><span>{</span> env.REPOSITORY <span>}</span><span>}</span>/`$<span>{</span><span>{</span> env.BRANCH <span>}</span><span>}</span>/`$<span>{</span><span>{</span> env.NOW <span>}</span><span>}</span>
+          <span>secret_id</span><span>:</span> `$<span>{</span><span>{</span> env.SECRET_ID <span>}</span><span>}</span>
+          <span>secret_key</span><span>:</span> `$<span>{</span><span>{</span> env.SECRET_KEY <span>}</span><span>}</span>
+          bucket<span>:</span>`$<span>{</span><span>{</span> env.BUCKET <span>}</span><span>}</span>
+          region<span>:</span>`$<span>{</span><span>{</span> env.REGION <span>}</span><span>}</span>
+
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h2 id="总结" tabindex="-1"> 总结</h2>
+<p>以上是Github Action初探，其实觉得Github Action在CI/CD上是大有可为的，CI\CD ：「持续集成（Continuous Integration）」、「持续交付（Continuous Delivery）」、「持续部署（Continuous Deployment）」。在公司中我看着文档用Github Action做了一些小尝试，后续也会分享出来给大家。以上有误的欢迎dalao们指正。
+本次demo代码地址：<a href="https://github.com/AutumnWhj/GithubAction" target="_blank" rel="noopener noreferrer">https://github.com/AutumnWhj/GithubAction</a></p>
+<h2 id="参考" tabindex="-1"> 参考</h2>
+<p><a href="https://docs.github.com/en/actions" target="_blank" rel="noopener noreferrer">GitHub Actions文档</a>
+<a href="https://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html" target="_blank" rel="noopener noreferrer">GitHub Actions 入门教程---阮一峰</a>
+<a href="https://blog.hszofficial.site/introduce/2020/11/30/%E4%BD%BF%E7%94%A8GithubActions%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81/" target="_blank" rel="noopener noreferrer">使用GithubActions自动化工作流</a>​</p>
+]]></content>
+    <category term="技术文章" scheme=""/>
+    <category term="CI/CD" scheme=""/>
+    <published>2021-09-11T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">CSS动画-实现元素依次淡出</title>
+    <id>https://autumnwhj.github.io/posts/technology/css/fade-in-out.html</id>
+    <link href="https://autumnwhj.github.io/posts/technology/css/fade-in-out.html"/>
+    <updated>2022-12-04T15:00:08.000Z</updated>
+    <summary type="html">公司网站动画要求不高，因此不必要上Lottie，用纯css就好，选啥，大伙得视自己公司项目而定</summary>
+    <content type="html"><![CDATA[<CountView></CountView>
+<h2 id="背景" tabindex="-1"> 背景</h2>
+<p>在查看webpack打包出来的bundle时，发现一个叫Lottie的js占用的体积还挺大,并且有好几个诡异的json文件，于是想着能不能优化，然后去项目里搜，发现好几个弹窗里的动画实现用到了这玩意，而且lottie制作的动画一个json文件就很大了，什么炫酷的动画竟然要引入Lottie来解决？
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2c9470ff925a41da8a596ecab1138f15~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png">
+咋一看，这不挺简单的吗？ 就淡入加延时的效果，再加上气泡的实现。下面就来实现一波吧。</p>
+<blockquote>
+<p>公司网站动画要求不高，因此不必要上Lottie，用纯css就好，选啥，大伙得视自己公司项目而定。</p>
+</blockquote>
+<p>demo：<a href="https://codepen.io/jlin2/pen/mdWGrvP" target="_blank" rel="noopener noreferrer">https://codepen.io/jlin2/pen/mdWGrvP</a></p>
+<h2 id="css动画animation" tabindex="-1"> css动画animation</h2>
+<p>MDN：<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation" target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/en-US/docs/Web/CSS/animation</a></p>
+<div><pre><code><span>animation</span><span>:</span> 3s ease-in 1s infinite reverse both running slidein<span>;</span>
+animation是以下动画属性的简写：
+</code></pre><div aria-hidden="true"><div></div><div></div></div></div><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>可选值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>animation-name</td>
+<td>指定动画的名称</td>
+<td>跟@keyframes [name]相同</td>
+</tr>
+<tr>
+<td>animation-duration</td>
+<td>整个动画完成的时间</td>
+<td>1s 2s 3s ........</td>
+</tr>
+<tr>
+<td>animation-timing-function</td>
+<td>动画以怎样的速度从开始到完成</td>
+<td>linear：匀速，ease-in：加速，ease-out：减速 cubic-bezier函数：自定义速度模式</td>
+</tr>
+<tr>
+<td>animation-delay</td>
+<td>动画开始的延时</td>
+<td>1s 2s 3s ........</td>
+</tr>
+<tr>
+<td>animation-iteration-count</td>
+<td>动画重复的次数</td>
+<td>infinite：无限播放，1，2，3....</td>
+</tr>
+<tr>
+<td>animation-direction</td>
+<td>指定动画播放的方向</td>
+<td>normal、alternate、reverse、alternate-reverse</td>
+</tr>
+<tr>
+<td>animation-fill-mode</td>
+<td>指定动画结束播放时的状态</td>
+<td>forwards、backwards、both......</td>
+</tr>
+<tr>
+<td>animation-play-state</td>
+<td>指定动画在播放过程中的状态，比如暂停、播放</td>
+<td>paused：暂停，running：运行</td>
+</tr>
+</tbody>
+</table>
+<h2 id="淡入实现fadeinup" tabindex="-1"> 淡入实现fadeInUp</h2>
+<p>定义一个动画帧<code>@keyframes fadeInUp</code>，运用到相关页面元素上就可。</p>
+<div><pre><code><span>.fadeInUp</span> <span>{</span>
+  <span>animation-name</span><span>:</span> fadeInUp<span>;</span>
+  <span>animation-duration</span><span>:</span> 1s<span>;</span>
+  <span>animation-iteration-count</span><span>:</span>1<span>;</span>
+<span>}</span>
+<span><span>@keyframes</span> fadeInUp</span> <span>{</span>
+  <span>from</span> <span>{</span>
+    <span>opacity</span><span>:</span> 0<span>;</span>
+    <span>transform</span><span>:</span> <span>translate3d</span><span>(</span>0<span>,</span> 100%<span>,</span> 0<span>)</span><span>;</span>
+  <span>}</span>
+  <span>to</span> <span>{</span>
+    <span>opacity</span><span>:</span> 1<span>;</span>
+    <span>transform</span><span>:</span> <span>translate3d</span><span>(</span>0<span>,</span> 0<span>,</span> 0<span>)</span><span>;</span>
+  <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h2 id="延时delay" tabindex="-1"> 延时delay</h2>
+<p>要求页面不同元素执行动画的时序不同，因此用<code>animation-delay</code>进行控制，可具体到毫秒 ,<code>animation-fill-mode</code>设置为<code>backwards</code>让动画回到第一帧状态。</p>
+<div><pre><code><span>.delay1000</span> <span>{</span>
+  <span>animation-delay</span><span>:</span> 1s<span>;</span>
+  <span>animation-fill-mode</span><span>:</span> backwards<span>;</span>
+<span>}</span>
+<span>.delay2000</span> <span>{</span>
+  <span>animation-delay</span><span>:</span> 2s<span>;</span>
+  <span>animation-fill-mode</span><span>:</span> backwards<span>;</span>
+<span>}</span>
+<span>.delay3000</span> <span>{</span>
+  <span>animation-delay</span><span>:</span> 3s<span>;</span>
+  <span>animation-fill-mode</span><span>:</span> backwards<span>;</span>
+<span>}</span>
+<span>.delay4000</span> <span>{</span>
+  <span>animation-delay</span><span>:</span> 4s<span>;</span>
+  <span>animation-fill-mode</span><span>:</span> backwards<span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h2 id="聊天气泡的实现" tabindex="-1"> 聊天气泡的实现</h2>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/101d698d29a84d698dbf642ba7859f0e~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png"></p>
+<h3 id="实现三角小箭头" tabindex="-1"> 实现三角小箭头</h3>
+<p>众所周知，实现三角形可以用border的transparent来实现。这里因为要显示边框的颜色，因此得实现两个小三角形，一个三角形用边框颜色填充，另外一个三角形跟矩形气泡同色，再偏移与边框宽度相等的px。</p>
+<div><pre><code><span>.bubble</span><span>{</span>
+  <span>position</span><span>:</span> relative<span>;</span>
+  <span>padding</span><span>:</span> 10px 20px<span>;</span>
+  <span>border</span><span>:</span> 1px solid #c83c23<span>;</span>
+  <span>border-radius</span><span>:</span> 12px<span>;</span>
+  <span>margin-bottom</span><span>:</span> 24px<span>;</span>
+  <span>background</span><span>:</span> #fff<span>;</span>
+<span>}</span>
+<span>.bubble::before</span><span>{</span>
+  <span>content</span><span>:</span> <span>''</span><span>;</span>
+  <span>position</span><span>:</span> absolute<span>;</span>
+  <span>top</span><span>:</span> 20%<span>;</span>
+<span>}</span>
+<span>.bubble::after</span><span>{</span>
+  <span>content</span><span>:</span> <span>''</span><span>;</span>
+  <span>position</span><span>:</span> absolute<span>;</span>
+  <span>top</span><span>:</span> 20%<span>;</span>
+<span>}</span>
+<span>.bubble-left::before</span><span>{</span>
+  <span>left</span><span>:</span> -12px<span>;</span>
+  <span>border-top</span><span>:</span> 8px solid transparent<span>;</span>
+  <span>border-bottom</span><span>:</span> 8px solid transparent<span>;</span>
+  <span>border-right</span><span>:</span>12px solid #c83c23<span>;</span>
+<span>}</span>
+<span>.bubble-left::after</span><span>{</span>
+  <span>left</span><span>:</span> -10px<span>;</span>
+  <span>border-top</span><span>:</span> 8px solid transparent<span>;</span>
+  <span>border-bottom</span><span>:</span> 8px solid transparent<span>;</span>
+  <span>border-right</span><span>:</span>12px solid #fff<span>;</span>
+<span>}</span>
+<span>.bubble-right::before</span><span>{</span>
+  <span>right</span><span>:</span> -12px<span>;</span>
+  <span>border-top</span><span>:</span> 8px solid transparent<span>;</span>
+  <span>border-bottom</span><span>:</span> 8px solid transparent<span>;</span>
+  <span>border-left</span><span>:</span>12px solid #c83c23<span>;</span>
+<span>}</span>
+<span>.bubble-right::after</span><span>{</span>
+  <span>right</span><span>:</span> -10px<span>;</span>
+  <span>border-top</span><span>:</span> 8px solid transparent<span>;</span>
+  <span>border-bottom</span><span>:</span> 8px solid transparent<span>;</span>
+  <span>border-left</span><span>:</span>12px solid #fff<span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h3 id="x偏移的弹出" tabindex="-1"> X偏移的弹出</h3>
+<p>更改keyframes中 to的X偏移量</p>
+<div><pre><code><span><span>@keyframes</span> fadeInUp</span> <span>{</span>
+  <span>from</span> <span>{</span>
+    <span>opacity</span><span>:</span> 0<span>;</span>
+    <span>transform</span><span>:</span> <span>translate3d</span><span>(</span>0<span>,</span> 100%<span>,</span> 0<span>)</span><span>;</span>
+  <span>}</span>
+  <span>to</span> <span>{</span>
+    <span>opacity</span><span>:</span> 1<span>;</span>
+    <span>transform</span><span>:</span> <span>translate3d</span><span>(</span>150<span>,</span> 0<span>,</span> 0<span>)</span><span>;</span>
+  <span>}</span>
+<span>}</span>
+<span>.offet-left</span> <span>{</span>
+  <span>transform</span><span>:</span> <span>translateX</span><span>(</span>-150px<span>)</span>
+<span>}</span>
+<span>.offet-right</span> <span>{</span>
+  <span>transform</span><span>:</span> <span>translateX</span><span>(</span>150px<span>)</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h2 id="背景图片也得淡入" tabindex="-1"> 背景图片也得淡入？</h2>
+<p>这时要用load事件监听图片加载完之后，再显示气泡的动画就行。</p>
+<h2 id="最终效果" tabindex="-1"> 最终效果：</h2>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5a4985839c4c4964b5642a000703f539~tplv-k3u1fbpfcp-watermark.image" alt="2021-06-10 16.51.13.gif"></p>
+<h2 id="总结" tabindex="-1"> 总结：</h2>
+<p>demo：<a href="https://codepen.io/jlin2/pen/mdWGrvP" target="_blank" rel="noopener noreferrer">https://codepen.io/jlin2/pen/mdWGrvP</a></p>
+<p>开发中基本很少要写动画效果，自己趁此机会熟悉了animation属性，其实有些同事一看到动画效果的交互都喜欢直接叫UI设计师用Lottie制作好，前端拿来直接用，省事；但是觉得还是要考虑具体的项目，像本司都是管理后台，基本都没动画，更别说酷炫的动画了。</p>
+<p>用css写，把Lottie的json文件删除了足足6MB，感觉轻快了许多。</p>
+<p>另外Lottie真的挺好用的，在UI大佬要非常炫酷动画时候，简直前端是不加班利器，附上地址：<a href="https://airbnb.io/lottie/#/" target="_blank" rel="noopener noreferrer">https://airbnb.io/lottie/#/</a></p>
+<p>好用的动画实现库：https://animate.style/</p>
+]]></content>
+    <category term="技术文章" scheme=""/>
+    <category term="CSS" scheme=""/>
+    <published>2021-06-20T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">V8的垃圾回收机制♻️</title>
+    <id>https://autumnwhj.github.io/posts/technology/node/v8-garbage.html</id>
+    <link href="https://autumnwhj.github.io/posts/technology/node/v8-garbage.html"/>
+    <updated>2022-12-04T15:00:08.000Z</updated>
+    <summary type="html">在内存管理上往往是分为新生代内存空间与老生代内存空间来进行高效的内存管理。</summary>
+    <content type="html"><![CDATA[<CountView></CountView>
+<h2 id="v8内存管理" tabindex="-1"> V8内存管理</h2>
+<p>在Node中，通过JavaScript只能使用部分内存，64位系统下约为1.5G，32位系统下约为0.7G，因此但凡要做一个读取2G文件的操作，都会导致内存溢出，因此要深入了解V8的内存管理机制，才能避免问题并能更好的管理内存。</p>
+<p>V8为何要限制内存大小？表层原因，最初V8为浏览器设计的，不太可能遇到大内存的场景，在此应用上绰绰有余；深层原因是V8的垃圾回收机制。</p>
+<p>提一嘴， 在V8中，JavaScript对象是通过堆来存储的，堆的物理结构是数组，而逻辑结构是一颗树。</p>
+<h2 id="v8垃圾回收机制" tabindex="-1"> V8垃圾回收机制</h2>
+<h3 id="内存分代" tabindex="-1"> 内存分代</h3>
+<p>在内存管理上往往是分为新生代内存空间与老生代内存空间来进行高效的内存管理。</p>
+<h3 id="新生代——scavenge算法" tabindex="-1"> 新生代——Scavenge算法</h3>
+<p>主要采用Cheney算法，一种采用复制复制方式实现的垃圾回收算法，它将内存一分为二，每一部分空间叫semispace。处于使用状态的空间叫From，闲置状态的是TO，核心是通过将存活对象在这两个semispace空间进行复制。类比GC是一个过滤筛，每次GC把From中的存活对象筛出来，扔到TO这个盘子，然后反转，把TO这个盘子当做From，用筛子又筛一遍，看看还剩下哪些存活对象。详细步骤如下：</p>
+<ul>
+<li><strong>划分内存空间</strong>：将内存分为From（使用状态）、To（闲置状态）两块空间；</li>
+</ul>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9f6e33498ea241b7b62d432de82c14ee~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<ul>
+<li><strong>垃圾回收进行时：</strong> 垃圾回收开始时，会先检查From里面的对象是存活状态和还是非存活状态，存活对象会被复制到To空间，To空间保存着这些存活对象，非存活对象就被释放掉；</li>
+<li><strong>反复过筛：</strong> 当Scavenge回收完成后，Form和To会进行翻转(即上次的To变成了From，From变成了To)，下一次Scavenge回收仍然是对From空间里面的对象进行检查，重复2步骤，</li>
+</ul>
+
+<ul>
+<li><strong>晋升：</strong> 若From中的存活对象多次检查仍然未被释放，会被认为是存活周期较长的对象，而晋升到老生代内存中去，或者To空间已被占用超过25%了，那也晋升到老生代中去。</li>
+</ul>
+<h3 id="老生代——mark-sweep-mark-compact算法" tabindex="-1"> 老生代——Mark-sweep &amp; Mark-compact算法</h3>
+<p>老生代即在存储中存活较久以及占用内存比较大的对象，因此<code>Scavenge</code>反复复制的算法就不适用了，一是大部分是存活的对象过筛的效率降低，而是浪费一半的内存空间。</p>
+<p>因此老生代使用<code>Mark-sweep</code>标记清除算法对对象进行标记，而未标记📌的就会在GC过程中给清除掉，上面说了堆的物理结构是数组，经过<code>Mark-sweep</code>把对象清除后，空间就会变得不连续，再新的对象进来时不好做内存分配，因此Mark-compack算法就是用来整理堆空间的。详细步骤如下：</p>
+<ul>
+<li><strong>标记清除：</strong> <code>Mark-sweep</code>标记清除，标记阶段只标记存活的对象，其他未做标记的会在清除阶段给清除掉；</li>
+</ul>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/df3510f48cd44e42a5c4583ee1e0aed9~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<ul>
+<li><strong>空间整理：</strong> 清除掉的对象会在内存形成零零散散分布的内存块，为了后续插入内存大的对象有足够空间，<code>Mark-sweep</code>后会进行<code>Mark-compact</code>把死亡对象的空间都整理在存活对象的右边👉，清理时直接把右边👉的空间都清空就行；</li>
+<li><strong>增量清除：</strong> 若碰到内存占用大时，一次垃圾回收会造成全停顿时间较长，因此在标记阶段使用增量标记Incremental Marking，可边标记边执行应用逻辑，尽可能少的阻塞js逻辑的执行。（虽然用增量标记使得垃圾回收的整个过程耗时增加，但是对于程序的执）</li>
+</ul>
+<h2 id="避免内存泄露" tabindex="-1"> 避免内存泄露</h2>
+<h3 id="全局变量" tabindex="-1"> 全局变量</h3>
+<p>在全局作用域中定义变量时，会自动挂载到window对象上，垃圾回收时，该对象被认为有被window对象引用，因此不会被标记清楚掉，一直存在内存中。</p>
+<div><pre><code>如在控制台输入
+var a = 100
+function b() { console.log('b') }
+
+window.a = 100
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div></div></div><p><strong>解决</strong>：尽可能不用全局变量，实在使用在程序执行完前要把他设为null, 如<code>a=null</code></p>
+<h3 id="监听器-计时器" tabindex="-1"> 监听器，计时器</h3>
+<div><pre><code>监听某一个事件
+window.addEventListener()
+
+计时
+const a = 0;
+const b = function() {
+    a++
+};
+window.setInterval(b, 1000);
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><p><strong>解决</strong>：用<code>window.removeEventListener()</code>移除监听器，<code>window.clearInterval()</code>移除计时器，可在程序中手动移除，或在程序执行完前移除，如vue<code>beforeDestroy</code>组件销毁前时把监听，定时器移除。</p>
+<h3 id="闭包" tabindex="-1"> 闭包</h3>
+<p>内层函数中访问到其外层函数的作用域形成了闭包，少用闭包</p>
+<div><pre><code>function a() {
+    let b = 'b';
+    return function c() {
+        console.log(b)
+    }
+}
+c里面会一直对b有引用
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h3 id="dom绑定" tabindex="-1"> dom绑定</h3>
+<div><pre><code>let btn = $('#btn')
+btn.onclick = (event) => { console.log(event.target) }
+btn的引用：
+1、btn.onclick ——>  btn
+2、event.target ——> btn
+btn = null 只是清楚 btn.onclick 的引用，但是一直存在引用event.target === btn的dom。
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div></div></div><p><strong>解决</strong>：移除dom元素，<code>document.body.removeChild(btn)</code></p>
+<h3 id="弱引用weakmap" tabindex="-1"> 弱引用WeakMap</h3>
+<p><code>弱引用</code>，它的键名所引用的对象均是弱引用，弱引用是指垃圾回收的过程中不会将键名对该对象的引用考虑进去，只要所引用的对象没有其他的引用了，垃圾回收机制就会释放该对象所占用的内存</p>
+<div><pre><code>// Map是强引用，key的值为null,map还是保存着对key的引用，会存在内存泄露问题
+let map = new Map()
+let key = new Array(1000000).fill(0)
+map.set(key, 1)
+key = null
+
+// WeapMap是弱引用，key的值为null时，会自动delete掉weak中的key键值
+let weak = new WeakMap()
+let key = new Array(1000000).fill(0)
+weak.set(key, 1)
+key = null
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><p><strong>Map强引用无法清理内存测试：</strong><br>
+以下使用Map发现heapUsed执行 <code>key=null</code>时，还是没办法清理掉内存的。</p>
+<div><pre><code>node --expose-gc
+global.gc() // 手动执行gc垃圾回收
+process.memoryUsage() // 查看当前内存使用
+let map = new Map()
+let key = new Array(1000000).fill(0)
+map.set(key, 1)
+global.gc()
+process.memoryUsage()
+// 清理内存 对比发现清不掉
+key = null
+global.gc()
+process.memoryUsage()
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h2 id="参考" tabindex="-1"> 参考</h2>
+<p>《深入浅出Nodejs》</p>
+]]></content>
+    <category term="技术文章" scheme=""/>
+    <category term="Node" scheme=""/>
+    <published>2021-01-21T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">vue cli项目打包优化，我能做的就这些了</title>
+    <id>https://autumnwhj.github.io/posts/technology/vue/vuecli-build.html</id>
+    <link href="https://autumnwhj.github.io/posts/technology/vue/vuecli-build.html"/>
+    <updated>2022-12-04T15:00:08.000Z</updated>
+    <summary type="html">vue cli本地构建打包也大约5min,到线上腾讯云docker构建打包全过程需要16~20min。因此不仅极大影响开发效率，也大大延迟了给测试交付的时间。</summary>
+    <content type="html"><![CDATA[<CountView></CountView>
+<h2 id="背景" tabindex="-1"> 背景</h2>
+<p>因为公司的前端项目在打包构建方面时间属实长得离谱，冷启动大约5min，本地构建打包也大约5min,到线上腾讯云docker构建打包全过程需要16~20min。因此不仅极大影响开发效率，也大大延迟了给测试交付的时间。</p>
+<h2 id="优化思路" tabindex="-1"> 优化思路</h2>
+<ul>
+<li>了解项目当前webpack配置</li>
+<li>构建相关优化</li>
+<li>打包体积相关优化</li>
+<li>docker相关优化</li>
+</ul>
+<h2 id="分析工具" tabindex="-1"> 分析工具</h2>
+<h3 id="speed-measure-webpack-plugin" tabindex="-1"> speed-measure-webpack-plugin</h3>
+<h4 id="介绍" tabindex="-1"> 介绍：</h4>
+<p><a href="https://www.npmjs.com/package/speed-measure-webpack-plugin" target="_blank" rel="noopener noreferrer">speed-measure-webpack-plugin npm</a></p>
+<blockquote>
+<p>The first step to optimising your webpack build speed, is to know where to focus your attention.
+This plugin measures your webpack build speed, giving an output like this:</p>
+</blockquote>
+<p>通过smp输出的分析可以清楚的了解到webpack构建过程中，每一阶段的loader以及plugin的工作花费的时间。</p>
+<h4 id="使用方式" tabindex="-1"> 使用方式：</h4>
+<div><pre><code># Yarn
+yarn add <span>-</span><span>D</span> speed<span>-</span>measure<span>-</span>webpack<span>-</span>plugin
+
+<span>const</span> SpeedMeasurePlugin <span>=</span> <span>require</span><span>(</span><span>'speed-measure-webpack-plugin'</span><span>)</span>
+module<span>.</span>exports <span>=</span> <span>{</span>
+  <span>chainWebpack</span><span>:</span> <span>config</span> <span>=></span> <span>{</span>
+    config
+      <span>.</span><span>plugin</span><span>(</span><span>'speed-measure-webpack-plugin'</span><span>)</span>
+      <span>.</span><span>use</span><span>(</span>SpeedMeasurePlugin<span>)</span>
+      <span>.</span><span>end</span><span>(</span><span>)</span>
+  <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><p>在本项目中使用其他的使用都会报error，但是以上的用法似乎不会区分plugin与loader的使用，甚至没有其他plugin的使用情况信息，迷惑~。</p>
+<h3 id="webpack-bundle-analyzer" tabindex="-1"> webpack-bundle-analyzer</h3>
+<h4 id="介绍-1" tabindex="-1"> 介绍：</h4>
+<p><a href="https://www.npmjs.com/package/webpack-bundle-analyzer" target="_blank" rel="noopener noreferrer">webpack-bundle-analyzer npm</a>
+用来分析webapck构建打包后的文件，如分包情况，占用体积等参数的分析。</p>
+<h4 id="使用方式-1" tabindex="-1"> 使用方式：</h4>
+<div><pre><code># Yarn
+yarn add <span>-</span><span>D</span> webpack<span>-</span>bundle<span>-</span>analyzer
+
+<span>const</span> BundleAnalyzerPlugin <span>=</span> <span>require</span><span>(</span><span>'webpack-bundle-analyzer'</span><span>)</span><span>.</span>BundleAnalyzerPlugin<span>;</span>
+module<span>.</span>exports <span>=</span> <span>{</span>
+  <span>plugins</span><span>:</span> <span>[</span>
+    <span>new</span> <span>BundleAnalyzerPlugin</span><span>(</span><span>)</span>
+  <span>]</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><p>但是在vue-cli中有report命令可以直接调用，然后去dist打包目录打开report.html。</p>
+<div><pre><code>vue<span>-</span>cli<span>-</span>service build <span>--</span>report
+or
+vue<span>-</span>cli<span>-</span>service build <span>--</span>report<span>-</span>json
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div></div></div><h2 id="查看vue-cli当前webpack配置" tabindex="-1"> 查看vue-cli当前webpack配置</h2>
+<h3 id="介绍-2" tabindex="-1"> 介绍</h3>
+<p>vue-cli脚手架会有webpack的很多默认行为，因此我们得知道基于vue-cli的项目，当前的webpack都配置了啥，然后才能做针对性的分析与优化。</p>
+<blockquote>
+<p><code>vue-cli-service</code> 暴露了 <code>inspect</code> 命令用于审查解析好的 webpack 配置。那个全局的 <code>vue</code> 可执行程序同样提供了 <code>inspect</code> 命令，这个命令只是简单的把 <code>vue-cli-service inspect</code> 代理到了你的项目中。</p>
+</blockquote>
+<h3 id="使用方式-2" tabindex="-1"> 使用方式：</h3>
+<div><pre><code>#根据mode，分别生成开发环境、生产环境的配置
+vue inspect <span>--</span>mode production <span>></span> output<span>.</span>js
+#输入命令后，在根目录会生产一个output<span>.</span>js文件
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div></div></div><p>如果<code>vue command not found</code>的错可以全局安装注册一下vue命令<code>npm install -g vue-cli</code></p>
+<h2 id="优化尝试" tabindex="-1"> 优化尝试</h2>
+<h3 id="hard-source-webpack-plugin加缓存" tabindex="-1"> hard-source-webpack-plugin加缓存</h3>
+<h4 id="介绍-3" tabindex="-1"> 介绍</h4>
+<p><a href="https://www.npmjs.com/package/hard-source-webpack-plugin" target="_blank" rel="noopener noreferrer">hard-source-webpack-plugin npm</a></p>
+<blockquote>
+<p>HardSourceWebpackPlugin is a plugin for webpack to provide an intermediate caching step for modules. In order to see results, you'll need to run webpack twice with this plugin: the first build will take the normal amount of time. The second build will be signficantly faster.</p>
+</blockquote>
+<p>在启动项目时会针对项目生成缓存，若是项目无package或其他变化，下次就不用花费时间重新构建，直接复用缓存。</p>
+<h4 id="使用方式-3" tabindex="-1"> 使用方式：</h4>
+<div><pre><code>#yarn
+yarn add <span>-</span><span>D</span> hard<span>-</span>source<span>-</span>webpack<span>-</span>plugin
+
+<span>const</span> HardSourceWebpackPlugin <span>=</span> <span>require</span><span>(</span><span>'hard-source-webpack-plugin'</span><span>)</span>
+module<span>.</span>exports <span>=</span> <span>{</span>
+	<span>configureWebpack</span><span>:</span> <span>config</span> <span>=></span> <span>{</span>
+  	config<span>.</span>plugin<span>.</span><span>push</span><span>(</span>
+    	<span>// 为模块提供中间缓存，缓存路径是：node_modules/.cache/hard-source</span>
+      <span>// solve Configuration changes are not being detected</span>
+      <span>new</span> <span>HardSourceWebpackPlugin</span><span>(</span><span>{</span>
+        <span>root</span><span>:</span> process<span>.</span><span>cwd</span><span>(</span><span>)</span><span>,</span>
+        <span>directories</span><span>:</span> <span>[</span><span>]</span><span>,</span>
+        <span>environmentHash</span><span>:</span> <span>{</span>
+          <span>root</span><span>:</span> process<span>.</span><span>cwd</span><span>(</span><span>)</span><span>,</span>
+          <span>directories</span><span>:</span> <span>[</span><span>]</span><span>,</span>
+          <span>files</span><span>:</span> <span>[</span><span>'package.json'</span><span>,</span> <span>'yarn.lock'</span><span>]</span>
+        <span>}</span>
+      <span>}</span><span>)</span>
+      <span>// 配置了files的主要原因是解决配置更新，cache不生效了的问题，配置后有包的变化，plugin会重新构建一部分cache</span>
+    <span>)</span>
+  <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h4 id="注意" tabindex="-1"> 注意：</h4>
+<p><code>Could not freeze : Cannot read property 'hash' of undefined</code> 删除node_modules/.cache后，重新启动项目，产生这个问题的原因可能是异步加载模块时编译产生的错误，或者加上这个可解决：</p>
+<div><pre><code>new HardSourceWebpackPlugin.ExcludeModulePlugin([
+ {
+   // HardSource works with mini-css-extract-plugin but due to how
+   // mini-css emits assets, assets are not emitted on repeated builds with
+   // mini-css and hard-source together. Ignoring the mini-css loader
+   // modules, but not the other css loader modules, excludes the modules
+   // that mini-css needs rebuilt to output assets every time.
+   test: /mini-css-extract-plugin[\\/]dist[\\/]loader/
+ }
+])
+
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h3 id="缩小文件检索解析范围" tabindex="-1"> 缩小文件检索解析范围</h3>
+<p>为避免无用的检索与递归遍历，可以使用alias指定引用时候的模块，noParse，对不依赖本地代码的第三方依赖不进行解析。</p>
+<div><pre><code><span>// 定义getAliasPath方法，把相对路径转换成绝对路径</span>
+<span>const</span> <span>getAliasPath</span> <span>=</span> <span>dir</span> <span>=></span> <span>join</span><span>(</span>__dirname<span>,</span> dir<span>)</span>
+module<span>.</span>exports <span>=</span> <span>{</span>
+	<span>configureWebpack</span><span>:</span> <span>config</span> <span>=></span> <span>{</span>
+    config<span>.</span>module<span>.</span>noParse <span>=</span> <span><span>/</span><span>^(vu|vue-router|vuex|vuex-router-sync|lodash|echarts|axios|element-ui)$</span><span>/</span></span>
+  <span>}</span>
+  <span>chainWebpack</span><span>:</span> <span>config</span> <span>=></span> <span>{</span>
+    <span>// 添加别名</span>
+    config<span>.</span>resolve<span>.</span>alias
+      <span>.</span><span>set</span><span>(</span><span>'@'</span><span>,</span> <span>getAliasPath</span><span>(</span><span>'src'</span><span>)</span><span>)</span>
+      <span>.</span><span>set</span><span>(</span><span>'assets'</span><span>,</span> <span>getAliasPath</span><span>(</span><span>'src/assets'</span><span>)</span><span>)</span>
+      <span>.</span><span>set</span><span>(</span><span>'utils'</span><span>,</span> <span>getAliasPath</span><span>(</span><span>'src/utils'</span><span>)</span><span>)</span>
+      <span>.</span><span>set</span><span>(</span><span>'views'</span><span>,</span> <span>getAliasPath</span><span>(</span><span>'src/views'</span><span>)</span><span>)</span>
+      <span>.</span><span>set</span><span>(</span><span>'components'</span><span>,</span> <span>getAliasPath</span><span>(</span><span>'src/components'</span><span>)</span><span>)</span>
+	<span>}</span>
+  <span>// 生产环境禁用eslint</span>
+  <span>lintOnSave</span><span>:</span> <span>!</span>process<span>.</span>env<span>.</span><span>NODE_ENV</span> <span>!==</span> <span>'production'</span><span>,</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h3 id="减少打包体积" tabindex="-1"> 减少打包体积</h3>
+<h4 id="image-webpack-plugin-图片压缩" tabindex="-1"> image-webpack-plugin 图片压缩</h4>
+<p>对图片像素要求没很极致的，这个压缩还是可以使用的，压缩率肉眼看起来感觉是没太大区别。
+这里注意一下，我没有对svg进行压缩，原因是压缩的svg,再通过构建时被打包成base64时，生成的base64会有问题，无法访问。</p>
+<div><pre><code>module<span>.</span>exports <span>=</span> <span>{</span>
+  <span>chainWebpack</span><span>:</span> <span>config</span> <span>=></span> <span>{</span>
+   <span>// 对图片进行压缩</span>
+    config<span>.</span>module
+      <span>.</span><span>rule</span><span>(</span><span>'images'</span><span>)</span>
+      <span>.</span><span>test</span><span>(</span><span><span>/</span><span>\.(png|jpe?g|gif)(\?.*)?$</span><span>/</span></span><span>)</span>
+      <span>.</span><span>use</span><span>(</span><span>'image-webpack-loader'</span><span>)</span>
+      <span>.</span><span>loader</span><span>(</span><span>'image-webpack-loader'</span><span>)</span>
+      <span>.</span><span>options</span><span>(</span><span>{</span> <span>bypassOnDebug</span><span>:</span> <span>true</span> <span>}</span><span>)</span>
+      <span>.</span><span>end</span><span>(</span><span>)</span>
+	<span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h4 id="uglifyjsplugin删除console-注释-不建议" tabindex="-1"> UglifyJsPlugin删除console 注释（不建议）</h4>
+<p>uglifyJsPlugin 用来对js文件进行压缩，减小js文件的大小。其会拖慢webpack的编译速度，建议开发环境时关闭，生产环境再将其打开。
+更建议规范团队成员的代码上去解决。</p>
+<div><pre><code>#yarn
+yarn add <span>-</span><span>D</span> uglifyjs<span>-</span>webpack<span>-</span>plugin
+
+<span>const</span> UglifyJsPlugin <span>=</span> <span>require</span><span>(</span><span>'uglifyjs-webpack-plugin'</span><span>)</span>
+
+module<span>.</span>exports <span>=</span> <span>{</span>
+	<span>configureWebpack</span><span>:</span> <span>config</span> <span>=></span> <span>{</span>
+  	config<span>.</span>plugin<span>.</span><span>push</span><span>(</span>
+    	<span>new</span> <span>UglifyJsPlugin</span><span>(</span><span>{</span>
+        <span>uglifyOptions</span><span>:</span> <span>{</span>
+          <span>// 删除注释</span>
+          <span>output</span><span>:</span> <span>{</span>
+            <span>comments</span><span>:</span> <span>false</span>
+          <span>}</span><span>,</span>
+          <span>// 删除console debugger 删除警告</span>
+          <span>compress</span><span>:</span> <span>{</span>
+            <span>warnings</span><span>:</span> <span>false</span><span>,</span>
+            <span>drop_console</span><span>:</span> <span>true</span><span>,</span> <span>//console</span>
+            <span>drop_debugger</span><span>:</span> <span>false</span><span>,</span>
+            <span>pure_funcs</span><span>:</span> <span>[</span><span>'console.log'</span><span>]</span> <span>//移除console</span>
+          <span>}</span>
+        <span>}</span><span>,</span>
+        <span>sourceMap</span><span>:</span> <span>false</span><span>,</span>
+        <span>parallel</span><span>:</span> <span>true</span> <span>//使用多进程并行运行来提高构建速度。默认并发运行数：os.cpus().length - 1。</span>
+      <span>}</span><span>)</span>
+    <span>)</span>
+  <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h3 id="terser-删除console" tabindex="-1"> terser 删除console</h3>
+<p>terser仍在维护，而UglifyJs无人维护了，terser功能上比后者强大很多</p>
+<div><pre><code><span>chainWebpack</span><span>:</span> <span>config</span> <span>=></span> <span>{</span>
+config<span>.</span><span>when</span><span>(</span>isProd<span>,</span> <span>config</span> <span>=></span> <span>{</span>
+  config<span>.</span>optimization<span>.</span><span>runtimeChunk</span><span>(</span><span>'single'</span><span>)</span>
+  <span>// 配置删除 console.log</span>
+  config<span>.</span>optimization<span>.</span><span>minimizer</span><span>(</span><span>'terser'</span><span>)</span><span>.</span><span>tap</span><span>(</span><span>args</span> <span>=></span> <span>{</span>
+    <span>// remove debugger</span>
+    args<span>[</span><span>0</span><span>]</span><span>.</span>terserOptions<span>.</span>compress<span>.</span>drop_debugger <span>=</span> <span>true</span>
+    <span>// 移除 console.log</span>
+    args<span>[</span><span>0</span><span>]</span><span>.</span>terserOptions<span>.</span>compress<span>.</span>pure_funcs <span>=</span> <span>[</span><span>'console.log'</span><span>]</span>
+    <span>// 去掉注释 如果需要看chunk-vendors公共部分插件，可以注释掉就可以看到注释了</span>
+    args<span>[</span><span>0</span><span>]</span><span>.</span>terserOptions<span>.</span>output <span>=</span> <span>{</span>
+      <span>comments</span><span>:</span> <span>false</span>
+    <span>}</span>
+    <span>return</span> args
+  <span>}</span><span>)</span>
+<span>}</span><span>)</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h3 id="dll动态链接库" tabindex="-1"> DLL动态链接库</h3>
+<p>这个插件是在一个额外的独立的 webpack 设置中创建一个只有 dll 的 bundle(dll-only-bundle)。 这个插件会生成一个名为 manifest.json 的文件，这个文件是用来让 DLLReferencePlugin 映射到相关的依赖上去的。</p>
+<blockquote>
+<p>可以简单理解为把一些依赖从项目的bundle中拆分出去，通过映射关系用请求来加载。我认为拆分出去之后不会再在项目里被解析，因此对构建，体积都是有所帮助的。</p>
+</blockquote>
+<p>配置DllPlugin,可以分为下面几个步骤：</p>
+<ol>
+<li>新建webpack.dll.config.js文件(其他命名都可以)，配置需要拆分的插件；</li>
+<li>在package.json文件中新建一条命令来专门打包，<code>&quot;build:dll&quot;:&quot;webpack --config webpack.dll.config.js&quot;</code>; 运行该命令；</li>
+<li>在vue.config.js 文件中配置<code>DllReferencePlugin</code>,主要把dll引用到需要预编译的依赖；</li>
+<li>在index.html手动引入拆分的bundle包（放到cdn的话会更好）</li>
+</ol>
+<p>安装：</p>
+<div><pre><code>#yarn 
+yarn add webpack<span>-</span>cli@<span>^</span><span>3.2</span><span>.3</span> add<span>-</span>asset<span>-</span>html<span>-</span>webpack<span>-</span>plugin@<span>^</span><span>3.1</span><span>.3</span> clean<span>-</span>webpack<span>-</span>plugin@<span>^</span><span>1.0</span><span>.1</span> <span>--</span>dev
+</code></pre><div aria-hidden="true"><div></div><div></div></div></div><div><pre><code><span>// webpack.dll.config.js</span>
+<span>/* eslint-disable @typescript-eslint/no-var-requires */</span>
+<span>const</span> path <span>=</span> <span>require</span><span>(</span><span>'path'</span><span>)</span>
+<span>const</span> webpack <span>=</span> <span>require</span><span>(</span><span>'webpack'</span><span>)</span>
+<span>const</span> CleanWebpackPlugin <span>=</span> <span>require</span><span>(</span><span>'clean-webpack-plugin'</span><span>)</span>
+<span>// dll文件存放的目录</span>
+<span>const</span> dllPath <span>=</span> <span>'public/vendor'</span>
+
+module<span>.</span>exports <span>=</span> <span>{</span>
+  <span>entry</span><span>:</span> <span>{</span>
+    <span>// 需要提取的库文件</span>
+    <span>vendor</span><span>:</span> <span>[</span><span>'vue'</span><span>,</span> <span>'vue-router'</span><span>,</span> <span>'vuex'</span><span>]</span><span>,</span>
+    <span>utils</span><span>:</span> <span>[</span><span>'axios'</span><span>,</span> <span>'lodash'</span><span>]</span>
+  <span>}</span><span>,</span>
+  <span>output</span><span>:</span> <span>{</span>
+    <span>path</span><span>:</span> path<span>.</span><span>join</span><span>(</span>__dirname<span>,</span> dllPath<span>)</span><span>,</span>
+    <span>filename</span><span>:</span> <span>'[name].dll.js'</span><span>,</span>
+    <span>// vendor.dll.js中暴露出的全局变量名</span>
+    <span>// 保持与 webpack.DllPlugin 中名称一致</span>
+    <span>library</span><span>:</span> <span>'[name]_[hash]'</span>
+  <span>}</span><span>,</span>
+  <span>plugins</span><span>:</span> <span>[</span>
+    <span>// 清除之前的dll文件</span>
+    <span>new</span> <span>CleanWebpackPlugin</span><span>(</span><span>[</span><span>'*.*'</span><span>]</span><span>,</span> <span>{</span>
+      <span>root</span><span>:</span> path<span>.</span><span>join</span><span>(</span>__dirname<span>,</span> dllPath<span>)</span>
+    <span>}</span><span>)</span><span>,</span>
+    <span>// manifest.json 描述动态链接库包含了哪些内容</span>
+    <span>new</span> <span>webpack<span>.</span>DllPlugin</span><span>(</span><span>{</span>
+      <span>path</span><span>:</span> path<span>.</span><span>join</span><span>(</span>__dirname<span>,</span> dllPath<span>,</span> <span>'[name]-manifest.json'</span><span>)</span><span>,</span>
+      <span>// 保持与 output.library 中名称一致</span>
+      <span>name</span><span>:</span> <span>'[name]_[hash]'</span><span>,</span>
+      <span>context</span><span>:</span> process<span>.</span><span>cwd</span><span>(</span><span>)</span>
+    <span>}</span><span>)</span>
+  <span>]</span>
+<span>12</span>
+
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><p>在<code>vue.config.js plugin</code>中使用</p>
+<div><pre><code>config<span>.</span>plugin<span>.</span><span>push</span><span>(</span>
+  <span>new</span> <span>DllReferencePlugin</span><span>(</span><span>{</span>
+    <span>context</span><span>:</span> process<span>.</span><span>cwd</span><span>(</span><span>)</span><span>,</span>
+    <span>manifest</span><span>:</span> <span>require</span><span>(</span><span>'./public/vendor/vendor-manifest.json'</span><span>)</span>
+  <span>}</span><span>)</span><span>,</span>
+    <span>new</span> <span>DllReferencePlugin</span><span>(</span><span>{</span>
+    <span>context</span><span>:</span> process<span>.</span><span>cwd</span><span>(</span><span>)</span><span>,</span>
+    <span>manifest</span><span>:</span> <span>require</span><span>(</span><span>'./public/vendor/utils-manifest.json'</span><span>)</span>
+  <span>}</span><span>)</span><span>,</span>
+    <span>// 将 dll 注入到 生成的 html 模板中</span>
+    <span>new</span> <span>AddAssetHtmlPlugin</span><span>(</span><span>{</span>
+    <span>// dll文件位置</span>
+    <span>filepath</span><span>:</span> <span>getPath</span><span>(</span><span>'./public/vendor/*.js'</span><span>)</span><span>,</span>
+    <span>// dll 引用路径</span>
+    <span>publicPath</span><span>:</span> <span>'./vendor'</span><span>,</span>
+    <span>// dll最终输出的目录</span>
+    <span>outputPath</span><span>:</span> <span>'./vendor'</span>
+  <span>}</span><span>)</span>
+<span>)</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h3 id="splitchunks-分割代码" tabindex="-1"> splitChunks 分割代码</h3>
+<p><a href="https://webpack.docschina.org/plugins/split-chunks-plugin/" target="_blank" rel="noopener noreferrer">split-chunks-plugin webpack</a></p>
+<ul>
+<li>chunks: 表示哪些代码需要优化，有三个可选值：initial(初始块)、async(按需加载块)、all(全部块)，默认为async</li>
+<li>minSize: 表示在压缩前的最小模块大小，默认为30000</li>
+<li>minChunks: 表示被引用次数，默认为1</li>
+<li>maxAsyncRequests: 按需加载时候最大的并行请求数，默认为5</li>
+<li>maxInitialRequests: 一个入口最大的并行请求数，默认为3</li>
+<li>automaticNameDelimiter: 命名连接符</li>
+<li>name: 拆分出来块的名字，默认由块名和hash值自动生成</li>
+<li>cacheGroups: 缓存组。缓存组的属性除上面所有属性外，还有test, priority, reuseExistingChunk
+<ul>
+<li>test: 用于控制哪些模块被这个缓存组匹配到</li>
+<li>priority: 缓存组打包的先后优先级</li>
+<li>reuseExistingChunk: 如果当前代码块包含的模块已经有了，就不在产生一个新的代码块</li>
+</ul>
+</li>
+</ul>
+<div><pre><code>config<span>.</span>optimization <span>=</span> <span>{</span>
+  <span>runtimeChunk</span><span>:</span> <span>'single'</span><span>,</span>
+  <span>splitChunks</span><span>:</span> <span>{</span>
+    <span>chunks</span><span>:</span> <span>'all'</span><span>,</span> <span>// 表示哪些代码需要优化，有三个可选值：initial(初始块)、async(按需加载块)、all(全部块)，默认为async</span>
+    <span>maxInitialRequests</span><span>:</span> <span>Infinity</span><span>,</span> <span>// 按需加载时候最大的并行请求数，默认为5</span>
+    <span>minSize</span><span>:</span> <span>30000</span><span>,</span> <span>// 依赖包超过300000bit将被单独打包</span>
+    <span>// 缓存组</span>
+    <span>// priority: 缓存组打包的先后优先级</span>
+    <span>// minChunks: 表示被引用次数，默认为1</span>
+    <span>cacheGroups</span><span>:</span> <span>{</span>
+      <span>//公共模块</span>
+      <span>commons</span><span>:</span> <span>{</span>
+        <span>name</span><span>:</span> <span>'chunk-commons'</span><span>,</span>
+        <span>test</span><span>:</span> <span>resolve</span><span>(</span><span>'src'</span><span>)</span><span>,</span> <span>// can customize your rules</span>
+        <span>minSize</span><span>:</span> <span>100</span><span>,</span> <span>//大小超过100个字节</span>
+        <span>minChunks</span><span>:</span> <span>3</span><span>,</span> <span>//  minimum common number</span>
+        <span>priority</span><span>:</span> <span>5</span><span>,</span>
+        <span>reuseExistingChunk</span><span>:</span> <span>true</span>
+      <span>}</span><span>,</span>
+      <span>// 第三方库</span>
+      <span>libs</span><span>:</span> <span>{</span>
+        <span>name</span><span>:</span> <span>'chunk-libs'</span><span>,</span>
+        <span>test</span><span>:</span> <span><span>/</span><span>[\\/]node_modules[\\/]</span><span>/</span></span><span>,</span>
+        <span>priority</span><span>:</span> <span>10</span><span>,</span>
+        <span>chunks</span><span>:</span> <span>'initial'</span><span>,</span> <span>// only package third parties that are initially dependent</span>
+        <span>reuseExistingChunk</span><span>:</span> <span>true</span><span>,</span>
+        <span>enforce</span><span>:</span> <span>true</span>
+      <span>}</span><span>,</span>
+      <span>echarts</span><span>:</span> <span>{</span>
+        <span>name</span><span>:</span> <span>'chunk-echarts'</span><span>,</span>
+        <span>test</span><span>:</span> <span><span>/</span><span>[\\/]node_modules[\\/]echarts[\\/]</span><span>/</span></span><span>,</span>
+        <span>chunks</span><span>:</span> <span>'all'</span><span>,</span>
+        <span>priority</span><span>:</span> <span>12</span><span>,</span>
+        <span>reuseExistingChunk</span><span>:</span> <span>true</span><span>,</span>
+        <span>enforce</span><span>:</span> <span>true</span>
+      <span>}</span>
+    <span>}</span>
+  <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h3 id="compression-webpack-plugin-gzip打包" tabindex="-1"> compression-webpack-plugin gzip打包</h3>
+<p>用法：<a href="https://www.npmjs.com/package/compression-webpack-plugin" target="_blank" rel="noopener noreferrer">https://www.npmjs.com/package/compression-webpack-plugin</a></p>
+<div><pre><code><span>const</span> CompressionWebpackPlugin <span>=</span> <span>require</span><span>(</span><span>"compression-webpack-plugin"</span><span>)</span><span>;</span>
+
+<span>const</span> <span>IS_PROD</span> <span>=</span> <span>[</span><span>"production"</span><span>,</span> <span>"prod"</span><span>]</span><span>.</span><span>includes</span><span>(</span>process<span>.</span>env<span>.</span><span>NODE_ENV</span><span>)</span><span>;</span>
+<span>const</span> productionGzipExtensions <span>=</span> <span><span>/</span><span>.(js|css|json|txt|html|ico|svg)(?.*)?$</span><span>/</span><span>i</span></span><span>;</span>
+
+module<span>.</span>exports <span>=</span> <span>{</span>
+  <span>configureWebpack</span><span>:</span> <span>config</span> <span>=></span> <span>{</span>
+    <span>const</span> plugins <span>=</span> <span>[</span><span>]</span><span>;</span>
+    <span>if</span> <span>(</span><span>IS_PROD</span><span>)</span> <span>{</span>
+      plugins<span>.</span><span>push</span><span>(</span>
+        <span>new</span> <span>CompressionWebpackPlugin</span><span>(</span><span>{</span>
+          <span>filename</span><span>:</span> <span>"[path].gz[query]"</span><span>,</span>
+          <span>algorithm</span><span>:</span> <span>"gzip"</span><span>,</span>
+          <span>test</span><span>:</span> productionGzipExtensions<span>,</span>
+          <span>threshold</span><span>:</span> <span>10240</span><span>,</span>
+          <span>minRatio</span><span>:</span> <span>0.8</span>
+        <span>}</span><span>)</span>
+      <span>)</span><span>;</span>
+    <span>}</span>
+    config<span>.</span>plugins <span>=</span> <span>[</span><span>...</span>config<span>.</span>plugins<span>,</span> <span>...</span>plugins<span>]</span><span>;</span>
+  <span>}</span>
+<span>}</span><span>;</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h3 id="terser-webpack-plugin-多线程压缩js" tabindex="-1"> terser-webpack-plugin 多线程压缩js</h3>
+<p>用法：<a href="https://www.npmjs.com/package/terser-webpack-plugin" target="_blank" rel="noopener noreferrer">https://www.npmjs.com/package/terser-webpack-plugin</a></p>
+<p>vue-cli3默认的webpack有此优化</p>
+<h3 id="externals-cdn" tabindex="-1"> externals &amp; cdn</h3>
+<p>externals 配置选项提供了「从输出的 bundle 中排除依赖」的方法。防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖(external dependencies)。</p>
+<p>这个属性很好理解，而且使用起来也非常方便，非常的nice! 最简单的方法是配置名称，当然你也可以编写一些复杂的配置<a href="https://www.webpackjs.com/configuration/externals/" target="_blank" rel="noopener noreferrer">官方文档</a></p>
+<div><pre><code><span>//vue.config.js</span>
+<span>...</span>
+<span>configureWebpack</span><span>:</span><span>{</span>
+	<span>externals</span><span>:</span> <span>{</span>
+      <span>"vue"</span><span>:</span> <span>"Vue"</span><span>,</span>
+      <span>"element-ui"</span><span>:</span> <span>"ELEMENT"</span>
+    <span>}</span><span>,</span>
+<span>}</span>
+<span>// 然后在 index.html 手动cdn引入(或者用插件自动添加)</span>
+</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><h2 id="总结" tabindex="-1"> 总结</h2>
+<p>以上是我在公司项目做的一些小优化，对其他项目不一定适用，甚至使用上也不是最优，但目前对本项目很大程度上还是有帮助的。更多webpack优化的思路，我附上个思维导图吧。(仅供学习，记录📝)
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dbedc66bbafc46ecbf24566346569527~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<h2 id="其他" tabindex="-1"> 其他</h2>
+<p><a href="https://cli.vuejs.org/zh/" target="_blank" rel="noopener noreferrer">Vue CLI</a></p>
+<p><a href="https://github.com/fncheng/blog/issues/26" target="_blank" rel="noopener noreferrer">vue-cli中的configureWebpack设置</a></p>
+<p><a href="https://shanyue.tech/frontend-engineering/docker.html#" target="_blank" rel="noopener noreferrer">如何使用 docker 部署前端项目</a></p>
+]]></content>
+    <category term="技术文章" scheme=""/>
+    <category term="Vue" scheme=""/>
+    <published>2021-05-02T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="html">幻灯片页</title>
     <id>https://autumnwhj.github.io/slide.html</id>
@@ -2713,7 +3907,7 @@ https://images.pexels.com/photos/2343468/pexels-photo-2343468.jpeg
     <title type="html">如何使用js将表单选中的文件转化为Base64编码格式</title>
     <id>https://autumnwhj.github.io/posts/technology/javascript/js-input-file-to-base64.html</id>
     <link href="https://autumnwhj.github.io/posts/technology/javascript/js-input-file-to-base64.html"/>
-    <updated>2022-12-02T14:51:00.000Z</updated>
+    <updated>2022-12-05T00:48:45.000Z</updated>
     <summary type="html">如何使用js将表单选中的文件转化为Base64编码格式  使用`Promise`封装一个一个方法，将`File` 对象转化为`Base64`编码格式。</summary>
     <content type="html"><![CDATA[<CountView></CountView>
 <h2 id="使用promise封装一个一个方法-将file-对象转化为base64编码格式。" tabindex="-1"> 使用<code>Promise</code>封装一个一个方法，将<code>File</code> 对象转化为<code>Base64</code>编码格式。</h2>
@@ -2847,183 +4041,6 @@ console<span>.</span><span>log</span><span>(</span><span>"World"</span><span>)</
     <category term="技术文章" scheme=""/>
     <category term="JavaScript" scheme=""/>
     <published>2022-08-07T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="html">VSCode修改扩展和用户文件夹目录位置(Windows)</title>
-    <id>https://autumnwhj.github.io/posts/technology/vscode/windows-change-extensions-userdata-position.html</id>
-    <link href="https://autumnwhj.github.io/posts/technology/vscode/windows-change-extensions-userdata-position.html"/>
-    <updated>2022-12-02T07:25:49.000Z</updated>
-    <summary type="html">VSCode修改扩展和用户文件夹目录位置(Windows)  Windows修改extensions扩展目录以及user-data用户文件夹目录位置，减少C盘压力</summary>
-    <content type="html"><![CDATA[<CountView></CountView>
-<blockquote>
-<p>Windows修改extensions扩展目录以及user-data用户文件夹目录位置，减少C盘压力</p>
-</blockquote>
-
-<p><code>vscode</code>的扩展和用户数据都是默认在C盘下的</p>
-<blockquote>
-<p><code>extensions </code>:<code>C:\Users\.vscode\extensions</code></p>
-<p><code>user-data</code>:<code>C:\Users\AppData\Roaming\Code</code></p>
-</blockquote>
-<p>一般来说，用户文件夹大小会比扩展目录的大小会大，就我而言，我的扩展有<code>1-1.5GB</code>的大小，而用户文件夹却占了我<code>5GB</code>容量，这对<code>C</code>盘容量严重不足的用户是非常难受的</p>
-<p>所以，修改这两个文件夹的目录位置以及刻不容缓</p>
-<h2 id="vscode便携版-不推荐" tabindex="-1"> <code>VSCode</code>便携版(不推荐)</h2>
-<p><a href="https://code.visualstudio.com/docs/editor/portable" target="_blank" rel="noopener noreferrer">官方有一个<code>zip</code>版本的<code>VSCode</code></a></p>
-<p>当我们解压完毕后:</p>
-<ol>
-<li>在当前<code>VSCode</code>目录下新建一个<code>data</code>文件夹</li>
-<li>点击<code>Code.exe</code>启动，启动完毕后关闭</li>
-<li>进入当前的<code>data</code>目录，可以发现有扩展目录，以及用户文件夹
-<ul>
-<li><img src="https://public-1310720021.cos.ap-shanghai.myqcloud.com/img/typora-user-images/2022-09-16-15:38:10*image-20220916153810529*b.png" alt="image-20220916153810529"></li>
-</ul>
-</li>
-<li>然后我们只需要将<code>C:\Users\.vscode\extensions</code>目录下的所有扩展文件夹全选复制到<code>extensions</code>目录中，以及将<code>C:\Users\AppData\Roaming\Code</code>文件夹内的所有文件全选复制到<code>user-data</code>目录内，再次打开<code>Code.exe</code>程序，就可以发现根以前的<code>VSCode</code>一模一样的配置以及扩展</li>
-</ol>
-<h3 id="缺点" tabindex="-1"> 缺点</h3>
-<p>但是我当时遇到的问题是当文件右键，或者文件夹右键时，不能通过<code>VSCode</code>打开文件，此时需要打开注册表，修改通过<code>VSCode</code>打开的程序位置。</p>
-<p>同时也发现了一个弊端，就是需要管理员权限的文件夹打不开，也写不进去，可以通过将<code>Code.exe</code>程序<code>右键-&gt;属性-&gt;兼容性-&gt;以管理员身份运行此程序-&gt;应用</code>。但经过这操作后，我发现的问题是<code>VSCode</code>窗口的工作空间不能将文件拖进去。上网一搜发现，只需要将<code>Code.exe</code>的以管理员身份运行此程序取消勾选,那这不就跟我预期的冲突了嘛😳😳</p>
-<p>后来想到了还是使用安装版的，想办法将两个大文件目录位置修改一下</p>
-<h2 id="vscode安装版-推荐" tabindex="-1"> <code>VSCode</code>安装版(推荐)</h2>
-<p><a href="https://code.visualstudio.com/#alt-downloads" target="_blank" rel="noopener noreferrer">安装版网址</a></p>
-<p>选择 <strong>System Installer</strong> 再根据自己的系统选择，下面的<code>.zip</code>就是上面说的便携版</p>
-<p>要修改两个文件夹的位置，就需要使用官方的<a href="https://code.visualstudio.com/docs/editor/command-line#_advanced-cli-options" target="_blank" rel="noopener noreferrer">高级 CLI 选项</a>了</p>
-<p>有两个选项我们可以用得上:<code>--extensions-dir &lt;dir&gt;</code> 和<code>--user-data-dir &lt;dir&gt;</code>,但这些命令对于便携版是不能生效的</p>
-<p>可以将这两个选项添加到<code>VSCode</code>的快捷方式后面</p>
-<ul>
-<li>
-<p><code>右键VSCode快捷方式-&gt;快捷方式-&gt;目标-&gt;</code> 在后面添加空格再加上<code> --extensions-dir &quot;D:\.vscode\extensions&quot; --user-data-dir &quot;D:\.vscode\user-data&quot;</code>自行替换目录位置</p>
-</li>
-<li>
-<p>我的设置⬇️</p>
-<ul>
-<li>
-<div><pre><code>"D:\.Software\Microsoft VS Code\Code.exe" --extensions-dir "D:\.vscode\extensions" --extensions-dir "D:\.vscode\extensions" --user-data-dir "D:\.vscode\user-data"
-</code></pre><div aria-hidden="true"><div></div></div></div></li>
-</ul>
-</li>
-</ul>
-<p><img src="https://public-1310720021.cos.ap-shanghai.myqcloud.com/img/typora-user-images/2022-09-16-16:20:40*image-20220916162039693*4.png" alt="image-20220916162039693"></p>
-<p><strong>但是就这样修改不能保证文件右键通过Code打开会使用指定的 扩展文件夹以及用户文件夹</strong></p>
-<p>接下来需要修改注册表的主要<code>VSCode</code>打开方式修改</p>
-<ul>
-<li>对选中文件右键点击弹出的菜单</li>
-<li>对选择目录右键点击弹出的菜单</li>
-<li>在目录空白处右键点击弹出的菜单</li>
-<li>对磁盘分区右键点击弹出的菜单</li>
-</ul>
-<p>相对应的注册表位置为</p>
-<div><pre><code>计算机\HKEY_CLASSES_ROOT\*\shell\VSCode\command
-计算机\HKEY_CLASSES_ROOT\Directory\shell\VSCode\command
-计算机\HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode\command
-计算机\HKEY_CLASSES_ROOT\Drive\shell\VSCode\command
-</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div></div></div><blockquote>
-<p><strong>注册表打开:</strong><code>Win+r-&gt;输入:Regedit-&gt;回车</code></p>
-</blockquote>
-<p>找到这些注册表项，在<code> Code.exe</code> 后添加同快捷方式一样的参数内容：</p>
-<div><pre><code>--extensions-dir "D:\.vscode\extensions" --user-data-dir "D:\.vscode\user-data"
-</code></pre><div aria-hidden="true"><div></div></div></div><p><strong>例如:</strong></p>
-<div><pre><code>"D:\.Software\Microsoft VS Code\Code.exe" --extensions-dir "D:\.vscode\extensions"  --user-data-dir "D:\.vscode\user-data" "%1"
-</code></pre><div aria-hidden="true"><div></div></div></div><p><img src="https://public-1310720021.cos.ap-shanghai.myqcloud.com/img/typora-user-images/2022-09-16-16:26:50*image-20220916162649864*d.png" alt="image-20220916162649864"></p>
-<p><strong>将四个注册表位置的数值数据一一添加即可，当然主要的是这四个位置，还有一些其他的文件打开可以执行添加</strong></p>
-<h3 id="终端使用code-命令打开项目" tabindex="-1"> 终端使用<code>code .</code>  命令打开项目</h3>
-<blockquote>
-<p>当使用<code>code .</code> 命令时，又发现了一个小问题，通过此命令打开的<code>VSCode</code> 还是不能找到扩展和用户文件夹</p>
-<p>解决办法如下⬇️</p>
-</blockquote>
-<p><code>code .</code> 命令，是通过环境变量<code>PATH</code> 中配置的路径找到<code>VSCode</code>的安装位置，下面的<code>bin</code>目录里面有一个<code>code.cmd</code></p>
-<p><img src="https://public-1310720021.cos.ap-shanghai.myqcloud.com/img/typora-user-images/2022-09-17-15:15:57*image-20220917151557064*8.png" alt="image-20220917151557064"></p>
-<p>安装版的<code>VSCode</code>会默认帮我们添加环境变量</p>
-<p>检查一下<code>code.cmd</code>文件</p>
-<div><pre><code>@echo off
-setlocal
-<span>set</span> <span>VSCODE_DEV</span><span>=</span>
-<span>set</span> <span>ELECTRON_RUN_AS_NODE</span><span>=</span><span>1</span>
-<span>"%~dp0..\Code.exe"</span> <span>"%~dp0..<span title="\r">\r</span>esources<span title="\a">\a</span>pp\out<span title="\c">\c</span>li.js"</span> --ms-enable-electron-run-as-node %*
-endlocal
-</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div></div></div><ul>
-<li>
-<p>可以发现第五行有一个<code>..\Code.exe</code>，表示运行上一个目录的<code>Code.exe</code>程序</p>
-</li>
-<li>
-<p>再往后面看,可以发现<code>--ms-enable-electron-run-as-node</code>有点像高级<code>CLI</code>选项，我们可以将上面提到的<code>--extensions-dir</code>和<code>--user-data-dir</code>继续添加在后面。下面是我添加后的代码，自行更换路径即可</p>
-<ul>
-<li>
-<div><pre><code>@echo off
-setlocal
-<span>set</span> <span>VSCODE_DEV</span><span>=</span>
-<span>set</span> <span>ELECTRON_RUN_AS_NODE</span><span>=</span><span>1</span>
-<span>"%~dp0..\Code.exe"</span> <span>"%~dp0..<span title="\r">\r</span>esources<span title="\a">\a</span>pp\out<span title="\c">\c</span>li.js"</span> --ms-enable-electron-run-as-node  --extensions-dir <span>"D:\.vscode<span title="\e">\e</span>xtensions"</span>  --user-data-dir <span>"D:\.vscode\user-data"</span> %*
-endlocal
-</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div></div></div></li>
-</ul>
-</li>
-</ul>
-<p>最后再使用<code>code .</code> 命令就可以找到扩展和用户信息文件夹了</p>
-<h3 id="问题" tabindex="-1"> 问题</h3>
-<p>更新之后，VSCode会重置注册表</p>
-<h4 id="解决办法" tabindex="-1"> 解决办法</h4>
-<p>使用注册表 <code>.reg</code> 文件一键修改</p>
-<blockquote>
-<p>注意！</p>
-<ul>
-<li>
-<p>地址值有些符号需要使用 <code>\</code> 转译，可通过将复制下来的未转译字符串路径使用<code>IDEA</code> 自动转译</p>
-</li>
-<li>
-<p>路径修改为自己的本地路径</p>
-</li>
-<li>
-<p>由于内容出现 <code>通过 Code 打开</code> 中文，需要将文件另存为<code>UTF-16 LE</code>注册表默认编码，否则会出现乱码</p>
-<p><img src="https://public-1310720021.cos.ap-shanghai.myqcloud.com/img/https/public-1310720021.cos.ap-shanghai.myqcloud.com/img/typora-user-images/2022-10-07-13:54:08*2022-10-07-13-53-30-image-20221007135329840-b*7.png" alt="image-20221007135329840"></p>
-</li>
-</ul>
-<div><pre><code><span>String</span> str <span>=</span> <span>"路径"</span>
-</code></pre><div aria-hidden="true"><div></div></div></div></blockquote>
-<div><pre><code>Windows Registry Editor Version 5.00
-
-[HKEY_CLASSES_ROOT\*\shell\VSCode]
-@="通过 Code 打开"
-"Icon"="D:\\.Software\\Microsoft VS Code\\Code.exe"
-
-[HKEY_CLASSES_ROOT\*\shell\VSCode\command]
-@="\"D:\\.Software\\Microsoft VS Code\\Code.exe\" --extensions-dir \"D:\\.vscode\\extensions\"  --user-data-dir \"D:\\.vscode\\user-data\" \"%1\""
-  
-Windows Registry Editor Version 5.00
-
-[HKEY_CLASSES_ROOT\Directory\shell\VSCode]
-@="通过 Code 打开"
-"Icon"="D:\\.Software\\Microsoft VS Code\\Code.exe"
-
-[HKEY_CLASSES_ROOT\Directory\shell\VSCode\command]
-@="\"D:\\.Software\\Microsoft VS Code\\Code.exe\" --extensions-dir \"D:\\.vscode\\extensions\"  --user-data-dir \"D:\\.vscode\\user-data\" \"%V\""
-
-Windows Registry Editor Version 5.00
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode]
-@="通过 Code 打开"
-"Icon"="D:\\.Software\\Microsoft VS Code\\Code.exe"
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode\command]
-@="\"D:\\.Software\\Microsoft VS Code\\Code.exe\" --extensions-dir \"D:\\.vscode\\extensions\"  --user-data-dir \"D:\\.vscode\\user-data\" \"%V\""
-
-Windows Registry Editor Version 5.00
-
-[HKEY_CLASSES_ROOT\Drive\shell\VSCode]
-@="通过 Code 打开"
-"Icon"="D:\\.Software\\Microsoft VS Code\\Code.exe"
-
-[HKEY_CLASSES_ROOT\Drive\shell\VSCode\command]
-@="\"D:\\.Software\\Microsoft VS Code\\Code.exe\" --extensions-dir \"D:\\.vscode\\extensions\"  --user-data-dir \"D:\\.vscode\\user-data\" \"%V\""
-
-[HKEY_CLASSES_ROOT\vscode\shell\open\command]
-@="\"D:\\.Software\\Microsoft VS Code\\Code.exe\" --extensions-dir \"D:\\.vscode\\extensions\" --user-data-dir \"D:\\.vscode\\user-data\" \"--open-url\"  \"--\" \"%1\""
-
-[HKEY_CLASSES_ROOT\VSCodeSourceFile\shell\open\command]
-@="\"D:\\.Software\\Microsoft VS Code\\Code.exe\" --extensions-dir \"D:\\.vscode\\extensions\"  --user-data-dir \"D:\\.vscode\\user-data\" \"%1\""
-</code></pre><div aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>]]></content>
-    <category term="技术文章" scheme=""/>
-    <category term="VSCode" scheme=""/>
-    <published>2022-09-16T00:00:00.000Z</published>
   </entry>
   <entry>
     <title type="html">Vuepress-theme-hope-iconfont 图标大全</title>
