@@ -20,7 +20,7 @@ export default hopeTheme({
     orange: "#fb9b5f",
   },
   fullscreen: true, //全屏
-  // pure: true, //纯净模式
+  pure: true, //纯净模式
 
   iconAssets: "iconfont",
 
