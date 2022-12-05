@@ -56,7 +56,7 @@ Github Action对workflow设有如下使用限制:
 - Webhook事件:由github网站的钩子行为触发的事件,通常Git操作都有钩子可以用于触发
 #### 定时事件
 最简单的事件就是定时事件其定义方式如下:
-on:   schedule:     _# * is a special character in YAML so you have to quote this string_     - cron:  '*/15 * * * *' 
+`on:   schedule: - cron:  '*/15 * * * *' `
 上面定义了一个每隔15分钟执行依次的任务.Github Avtion目前只支持[crontab语法定义定时任务](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07)
 这个事件只会拉取默认分支(一般是master或者main分支,可以在仓库的settings->branches->Default branch下修改)的最近一次提交进行执行.
 #### 手动触发事件
@@ -145,7 +145,7 @@ Webhook事件是借由Github的webhook事件触发的事件,具体有哪些可�
    - prereleased预发布后执行
    - released发布后执行
 ### 模板语法
-我们可以看到上面例子中会有\$\{\{ ... \}\}这样的文字,这是Github Action定义的模板语法,其中...的部分可以是常数,上下文变量,运算符或者预定义的函数调用.
+我们可以看到上面例子中会有`${{ ... }}`这样的文字,这是Github Action定义的模板语法,其中...的部分可以是常数,上下文变量,运算符或者预定义的函数调用.
 #### 常数
 模板语法支持所有json支持的简单数据类型,也就是null,boolean,number,string.
 #### 上下文变量
@@ -154,9 +154,9 @@ Webhook事件是借由Github的webhook事件触发的事件,具体有哪些可�
 - matrix,执行策略中定义的变量,每次执行每个key只会有一个取值
 - env,workflow中env定义的变量
 - github,通常用于获取仓库和分支的信息,比较值得关注的有:
-   - github.repository 执行的仓库名,也就是{namespace}/{repo_name},如果只要repo_name,可以使用${GITHUB_REPOSITORY#*/}
-   - github.ref工作流的分支或tag,分支为refs/heads/<branch_name>格式,tag是refs/tags/<tag_name>格式,如果只要tag名可以使用${GITHUB_REF/refs\/tags\//}
-   - ${GITHUB_SHA::8}可以用于获得前8位的commit的id值
+   - github.repository 执行的仓库名,也就是{namespace}/{repo_name},如果只要repo_name,可以使用`${GITHUB_REPOSITORY#*}`
+   - github.ref工作流的分支或tag,分支为refs/heads/<branch_name>格式,tag是refs/tags/<tag_name>格式,如果只要tag名可以使用`${GITHUB_REF/refs/tags/}`
+   - `${GITHUB_SHA::8}`可以用于获得前8位的commit的id值
    - github.event.inputs由手动事件触发传入的参数
 - secrets,项目或命名空间定义的账号密码信息,可以在项目的Settings->Secrets中设置,一般用于上传package或者docker镜像.
 #### 运算符
@@ -307,7 +307,7 @@ jobs:
         run: |
           git config --local user.email "xxx@qq.com"
           git config --local user.name "Autumn"
-          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git remote set-url origin https://`${{ github.actor }}:`${{ secrets.GITHUB_TOKEN }}@github.com/`${{ github.repository }}
           git pull --rebase
           git commit --allow-empty -m "a commit a day keeps your girlfriend away"
           git push
@@ -373,33 +373,33 @@ jobs:
           utcOffset: '+08:00'
       - name: Use current time
         env:
-          F_TIME: '${{ steps.current-time.outputs.formattedTime }}'
+          F_TIME: '`${{ steps.current-time.outputs.formattedTime }}'
         run: echo "NOW=$F_TIME" >> $GITHUB_ENV
 
       - name: Get repository and branch name
         shell: bash
         run: |
-          echo "BRANCH=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
-          echo "REPOSITORY=$(echo ${GITHUB_REPOSITORY#threfo/} | tr / -)" >> $GITHUB_ENV
-          echo "PRBRANCH=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
+          echo "BRANCH=$(echo `${GITHUB_REF#refs/heads/}` | tr / -)" >> $GITHUB_ENV
+          echo "REPOSITORY=$(echo `${GITHUB_REPOSITORY#threfo/}` | tr / -)" >> $GITHUB_ENV
+          echo "PRBRANCH=$(echo `${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
 
       - name: Upload COS
         uses: zkqiang/tencent-cos-action@v0.1.0
         with:
-          args: upload -r ./dist/ /${{ env.REPOSITORY }}/${{ env.BRANCH }}/default
-          secret_id: ${{ env.SECRET_ID }}
-          secret_key: ${{ env.SECRET_KEY }}
-          bucket:${{ env.BUCKET }}
-          region:${{ env.REGION }}
+          args: upload -r ./dist/ /`${{ env.REPOSITORY }}/`${{ env.BRANCH }}/default
+          secret_id: `${{ env.SECRET_ID }}
+          secret_key: `${{ env.SECRET_KEY }}
+          bucket:`${{ env.BUCKET }}
+          region:`${{ env.REGION }}
 
       - name: Upload COS Backup release
         uses: zkqiang/tencent-cos-action@v0.1.0
         with:
-          args: upload -r ./dist/ /${{ env.REPOSITORY }}/${{ env.BRANCH }}/${{ env.NOW }}
-          secret_id: ${{ env.SECRET_ID }}
-          secret_key: ${{ env.SECRET_KEY }}
-          bucket:${{ env.BUCKET }}
-          region:${{ env.REGION }}
+          args: upload -r ./dist/ /`${{ env.REPOSITORY }}/`${{ env.BRANCH }}/`${{ env.NOW }}
+          secret_id: `${{ env.SECRET_ID }}
+          secret_key: `${{ env.SECRET_KEY }}
+          bucket:`${{ env.BUCKET }}
+          region:`${{ env.REGION }}
 
 ```
 ## 总结

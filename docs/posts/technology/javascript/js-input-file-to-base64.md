@@ -10,7 +10,6 @@ category:
   - Base64
 tag:
   - javascript
-  - axios
 # 是否置顶
 sticky: false
 # 是否收藏在博客主题的文章列表中。当填入数字时，数字越大，排名越靠前
